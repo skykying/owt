@@ -4,7 +4,6 @@ set_preinit_iface() {
 	. /lib/functions.sh
 
 	case $(board_name) in
-	aruba,ap-303| \
 	asus,rt-ac58u| \
 	avm,fritzbox-4040| \
 	glinet,gl-b1300| \

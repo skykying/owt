@@ -290,8 +290,8 @@ xtse() {
 		annex_s="$annex_s M,"
 	fi
 
-	annex_s=${annex_s:1}
-	annex_s=${annex_s%?}
+	annex_s=`echo ${annex_s:1}`
+	annex_s=`echo ${annex_s%?}`
 
 	# Evaluate Line Mode (according to G.997.1, 7.3.1.1.1)
 
@@ -346,8 +346,8 @@ xtse() {
 		line_mode_s="$line_mode_s G.993.1 (VDSL),"
 	fi
 
-	line_mode_s=${line_mode_s:1}
-	line_mode_s=${line_mode_s%?}
+	line_mode_s=`echo ${line_mode_s:1}`
+	line_mode_s=`echo ${line_mode_s%?}`
 
 	xtse_s="${xtse1}, ${xtse2}, ${xtse3}, ${xtse4}, ${xtse5}, ${xtse6}, ${xtse7}, ${xtse8}"
 
@@ -451,8 +451,7 @@ latency_delay() {
 errors() {
 	local lsctg
 	local dpctg
-	local fecsf
-	local fecsn
+	local ccsg
 	local esf
 	local esn
 	local sesf
@@ -469,15 +468,16 @@ errors() {
 	local hecf
 	local hecn
 
+	local fecn
+	local fecf
+
 	lsctg=$(dsl_cmd pmlsctg 1)
-	fecsf=$(dsl_val "$lsctg" nFECS)
 	esf=$(dsl_val "$lsctg" nES)
 	sesf=$(dsl_val "$lsctg" nSES)
 	lossf=$(dsl_val "$lsctg" nLOSS)
 	uasf=$(dsl_val "$lsctg" nUAS)
 
 	lsctg=$(dsl_cmd pmlsctg 0)
-	fecsn=$(dsl_val "$lsctg" nFECS)
 	esn=$(dsl_val "$lsctg" nES)
 	sesn=$(dsl_val "$lsctg" nSES)
 	lossn=$(dsl_val "$lsctg" nLOSS)
@@ -493,9 +493,15 @@ errors() {
 	crc_pn=$(dsl_val "$dpctg" nCRC_P)
 	crcp_pn=$(dsl_val "$dpctg" nCRCP_P)
 
+	ccsg=$(dsl_cmd pmccsg 0 1 0)
+	fecf=$(dsl_val "$ccsg" nFEC)
+
+	ccsg=$(dsl_cmd pmccsg 0 0 0)
+	fecn=$(dsl_val "$ccsg" nFEC)
+
 	if [ "$action" = "lucistat" ]; then
-		echo "dsl.errors_fecs_near=${fecsn:-nil}"
-		echo "dsl.errors_fecs_far=${fecsf:-nil}"
+		echo "dsl.errors_fec_near=${fecn:-nil}"
+		echo "dsl.errors_fec_far=${fecf:-nil}"
 		echo "dsl.errors_es_near=${esn:-nil}"
 		echo "dsl.errors_es_far=${esf:-nil}"
 		echo "dsl.errors_ses_near=${sesn:-nil}"
@@ -511,7 +517,7 @@ errors() {
 		echo "dsl.errors_crcp_p_near=${crcp_pn:-nil}"
 		echo "dsl.errors_crcp_p_far=${crcp_pf:-nil}"
 	else
-		echo "Forward Error Correction Seconds (FECS):  Near: ${fecsn} / Far: ${fecsf}"
+		echo "Forward Error Correction Seconds (FECS):  Near: ${fecn} / Far: ${fecf}"
 		echo "Errored seconds (ES):                     Near: ${esn} / Far: ${esf}"
 		echo "Severely Errored Seconds (SES):           Near: ${sesn} / Far: ${sesf}"
 		echo "Loss of Signal Seconds (LOSS):            Near: ${lossn} / Far: ${lossf}"
@@ -728,7 +734,7 @@ profile() {
 	fi
 }
 
-dslstat() {
+status() {
 	vendor
 	chipset
 	xtse
@@ -744,6 +750,6 @@ dslstat() {
 
 lucistat() {
 	echo "local dsl={}"
-	dslstat
+	status
 	echo "return dsl"
 }

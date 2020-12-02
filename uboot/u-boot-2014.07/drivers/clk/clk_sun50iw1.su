@@ -1,0 +1,12 @@
+clk_sun50iw1.c:426:4:get_parent_pll_mipi	0	static
+clk_sun50iw1.c:439:5:set_parent_pll_mipi	0	static
+clk_sun50iw1.c:474:13:clk_disable_pll_mipi	0	static
+clk_sun50iw1.c:180:22:calc_rate_pll_mipi	16	static
+clk_sun50iw1.c:94:12:get_factors_pll_mipi	48	static
+clk_sun50iw1.c:161:22:calc_rate_media	16	static
+clk_sun50iw1.c:125:12:get_factors_pll_de	24	static
+clk_sun50iw1.c:60:12:get_factors_pll_video1	24	static
+clk_sun50iw1.c:26:12:get_factors_pll_video0	24	static
+clk_sun50iw1.c:451:12:clk_enable_pll_mipi	16	static
+clk_sun50iw1_tbl.c:1680:6:sunxi_clk_factor_initlimits	0	static
+clk_sun50iw1.c:665:7:init_clocks	32	static

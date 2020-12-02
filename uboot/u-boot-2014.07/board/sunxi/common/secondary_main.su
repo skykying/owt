@@ -1,0 +1,10 @@
+secondary_main.c:91:7:request_spin_lock	8	static
+secondary_main.c:102:6:sunxi_multi_core_boot	16	static
+secondary_main.c:163:13:set_bmp_decode_flag	0	static
+secondary_main.c:168:12:get_bmp_decode_flag	0	static
+secondary_main.c:342:5:sunxi_bmp_decode_from_compress	16	static
+secondary_main.c:492:5:sunxi_secondary_cpu_poweroff	8	static
+secondary_main.c:506:5:sunxi_set_cpu_off	8	static
+secondary_main.c:409:5:sunxi_third_cpu_task	16	static
+secondary_main.c:351:5:sunxi_secendary_cpu_task	48	static
+secondary_main.c:511:5:sunxi_set_cpu_on	0	static

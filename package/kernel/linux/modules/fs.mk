@@ -98,7 +98,6 @@ define KernelPackage/fs-cifs
   AUTOLOAD:=$(call AutoLoad,30,cifs)
   $(call AddDepends/nls)
   DEPENDS+= \
-    +kmod-crypto-arc4 \
     +kmod-crypto-hmac \
     +kmod-crypto-md5 \
     +kmod-crypto-md4 \
@@ -389,8 +388,7 @@ define KernelPackage/fs-nfs-common-rpcsec
 	+kmod-crypto-md5 \
 	+kmod-crypto-sha1 \
 	+kmod-crypto-hmac \
-	+kmod-crypto-ecb \
-	+kmod-crypto-arc4
+	+kmod-crypto-ecb
   KCONFIG:= \
 	CONFIG_SUNRPC_GSS \
 	CONFIG_RPCSEC_GSS_KRB5

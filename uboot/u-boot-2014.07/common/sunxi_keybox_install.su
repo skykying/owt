@@ -1,0 +1,2 @@
+sunxi_keybox_install.c:87:5:sunxi_widevine_keybox_install	4112	static
+sunxi_keybox_install.c:136:5:sunxi_keymaster_keybox_install	4248	static

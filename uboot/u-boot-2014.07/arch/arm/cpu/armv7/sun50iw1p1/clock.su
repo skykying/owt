@@ -1,0 +1,12 @@
+clock.c:397:5:sunxi_clock_get_pll6	0	static
+clock.c:409:5:sunxi_clock_get_corepll	8	static
+clock.c:443:5:sunxi_clock_get_axi	8	static
+clock.c:455:5:sunxi_clock_get_ahb	8	static
+clock.c:487:5:sunxi_clock_get_apb	8	static
+clock.c:508:6:sunxi_clock_set_ahb2	0	static
+clock.c:518:5:sunxi_clock_get_ahb2	8	static
+clock.c:533:5:sunxi_clock_get_mbus	8	static
+clock.c:565:5:pll_lock_is_new_mode	0	static
+clock.c:573:6:enable_pll_lock_bit	0	static
+clock.c:581:6:disable_pll_lock_bit	0	static
+clock.c:590:5:sunxi_clock_set_corepll	32	static

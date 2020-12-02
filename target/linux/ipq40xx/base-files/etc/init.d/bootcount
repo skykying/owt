@@ -2,7 +2,9 @@
 
 START=99
 
-boot() {
+start() {
+	. /lib/functions.sh
+
 	case $(board_name) in
 	alfa-network,ap120c-ac)
 		[ -n "$(fw_printenv bootcount changed 2>/dev/null)" ] &&\

@@ -8,10 +8,10 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
-PKG_VERSION:=2019.04
+PKG_VERSION:=2018.03
 PKG_RELEASE:=1
 
-PKG_HASH:=76b7772d156b3ddd7644c8a1736081e55b78828537ff714065d21dbade229bef
+PKG_HASH:=7e7477534409d5368eb1371ffde6820f0f79780a1a1f676161c48442cb303dfd
 
 include $(INCLUDE_DIR)/u-boot.mk
 include $(INCLUDE_DIR)/package.mk
@@ -29,15 +29,8 @@ define U-Boot/clearfog
   UBOOT_IMAGE:=u-boot-spl.kwb
 endef
 
-define U-Boot/uDPU
-  NAME:=Methode uDPU
-  BUILD_DEVICES:=methode_udpu
-  BUILD_SUBTARGET:=cortexa53
-endef
-
 UBOOT_TARGETS:= \
-	clearfog \
-	uDPU
+	clearfog
 
 Build/Exports:=$(Host/Exports)
 
@@ -51,7 +44,7 @@ endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR_IMAGE)
-	$(CP) $(PKG_BUILD_DIR)/$(UBOOT_IMAGE) $(STAGING_DIR_IMAGE)/$(BUILD_VARIANT)-$(UBOOT_IMAGE)
+	$(CP) $(PKG_BUILD_DIR)/$(UBOOT_IMAGE) $(STAGING_DIR_IMAGE)/$(BUILD_VARIANT)-u-boot-spl.kwb
 endef
 
 $(eval $(call BuildPackage/U-Boot))

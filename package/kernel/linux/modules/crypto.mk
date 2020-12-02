@@ -46,17 +46,6 @@ endef
 $(eval $(call KernelPackage,crypto-aead))
 
 
-define KernelPackage/crypto-arc4
-  TITLE:=ARC4 cipher CryptoAPI module
-  KCONFIG:=CONFIG_CRYPTO_ARC4
-  FILES:=$(LINUX_DIR)/crypto/arc4.ko
-  AUTOLOAD:=$(call AutoLoad,09,arc4)
-  $(call AddDepends/crypto)
-endef
-
-$(eval $(call KernelPackage,crypto-arc4))
-
-
 define KernelPackage/crypto-authenc
   TITLE:=Combined mode wrapper for IPsec
   DEPENDS:=+kmod-crypto-manager +kmod-crypto-null
@@ -359,31 +348,6 @@ define KernelPackage/crypto-hw-padlock
 endef
 
 $(eval $(call KernelPackage,crypto-hw-padlock))
-
-
-define KernelPackage/crypto-hw-safexcel
-  TITLE:= MVEBU SafeXcel Crypto Engine module
-  DEPENDS:=@!LINUX_4_14 @(TARGET_mvebu_cortexa53||TARGET_mvebu_cortexa72) \
-	+kmod-crypto-authenc +kmod-crypto-md5 +kmod-crypto-hmac +kmod-crypto-sha256 +kmod-crypto-sha512
-  KCONFIG:= \
-	CONFIG_CRYPTO_HW=y \
-	CONFIG_CRYPTO_DEV_SAFEXCEL
-  FILES:=$(LINUX_DIR)/drivers/crypto/inside-secure/crypto_safexcel.ko
-  AUTOLOAD:=$(call AutoLoad,90,crypto_safexcel)
-  $(call AddDepends/crypto)
-endef
-
-define KernelPackage/crypto-hw-safexcel/description
-MVEBU's EIP97 and EIP197 Cryptographic Engine driver designed by
-Inside Secure. This is found on Marvell Armada 37xx/7k/8k SoCs.
-
-Particular version of these IP (EIP197B and EIP197D) require firmware.
-Unfortunately it's not freely available and needs signed Non-Disclosure
-Agreement (NDA) with Marvell. For those who have signed NDA the firmware can be
-obtained at https://extranet.marvell.com.
-endef
-
-$(eval $(call KernelPackage,crypto-hw-safexcel))
 
 
 define KernelPackage/crypto-hw-talitos
@@ -768,20 +732,14 @@ define KernelPackage/crypto-user
   TITLE:=CryptoAPI userspace interface
   DEPENDS:=+kmod-crypto-hash +kmod-crypto-manager
   KCONFIG:= \
-	CONFIG_CRYPTO_USER \
 	CONFIG_CRYPTO_USER_API \
-	CONFIG_CRYPTO_USER_API_AEAD \
 	CONFIG_CRYPTO_USER_API_HASH \
-	CONFIG_CRYPTO_USER_API_RNG \
 	CONFIG_CRYPTO_USER_API_SKCIPHER
   FILES:= \
 	$(LINUX_DIR)/crypto/af_alg.ko \
-	$(LINUX_DIR)/crypto/algif_aead.ko \
 	$(LINUX_DIR)/crypto/algif_hash.ko \
-	$(LINUX_DIR)/crypto/algif_rng.ko \
-	$(LINUX_DIR)/crypto/algif_skcipher.ko \
-	$(LINUX_DIR)/crypto/crypto_user.ko
-  AUTOLOAD:=$(call AutoLoad,09,af_alg algif_aead algif_hash algif_rng algif_skcipher crypto_user)
+	$(LINUX_DIR)/crypto/algif_skcipher.ko
+  AUTOLOAD:=$(call AutoLoad,09,af_alg algif_hash algif_skcipher)
   $(call AddDepends/crypto)
 endef
 

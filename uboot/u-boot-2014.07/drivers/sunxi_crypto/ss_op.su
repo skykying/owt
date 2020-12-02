@@ -1,0 +1,11 @@
+ss_op.c:15:12:ss_get_ver	0	static
+ss_op.c:26:13:ss_set_drq	0	static
+ss_op.c:31:13:ss_ctrl_start	8	static
+ss_op.c:41:13:ss_ctrl_stop	0	static
+ss_op.c:46:13:ss_wait_finish	0	static
+ss_op.c:56:13:ss_pending_clear	0	static
+ss_op.c:68:13:ss_irq_enable	0	static
+ss_op.c:76:13:ss_irq_disable	0	static
+ss_op.c:84:12:ss_check_err	0	static
+ss_op.c:89:13:ss_open	0	static
+ss_op.c:120:13:ss_close	0	static

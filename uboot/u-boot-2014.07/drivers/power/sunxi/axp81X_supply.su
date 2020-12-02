@@ -1,0 +1,12 @@
+axp81X_supply.c:2331:12:axp81X_set_dcdc_output	24	static
+axp81X_supply.c:2354:12:axp81X_set_aldo_output	24	static
+axp81X_supply.c:2386:12:axp81X_set_eldo_output	24	static
+axp81X_supply.c:2369:12:axp81X_set_dldo_output	24	static
+axp81X_supply.c:2416:12:axp81X_set_gpioldo_output	24	static
+axp81X_supply.c:2429:12:axp81X_set_gpio_output	16	static
+axp81X_supply.c:85:12:axp81X_set_dc5ldo	16	static
+axp81X_supply.c:44:12:axp81X_set_dc1sw	16	static
+axp81X_supply.c:2455:5:axp81_set_supply_status	8	static
+axp81X_supply.c:2491:5:axp81_set_supply_status_byname	24	static
+axp81X_supply.c:2674:5:axp81_probe_supply_status	0	static
+axp81X_supply.c:2679:5:axp81_probe_supply_status_byname	24	static

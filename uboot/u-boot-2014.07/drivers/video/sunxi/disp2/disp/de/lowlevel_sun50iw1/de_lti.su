@@ -1,0 +1,8 @@
+de_lti.c:28:5:de_lti_set_reg_base	0	static
+de_lti.c:35:5:de_lti_update_regs	8	static
+de_lti.c:45:5:de_lti_init	16	static
+de_lti.c:79:5:de_lti_enable	0	static
+de_lti.c:97:5:de_lti_set_size	0	static
+de_lti.c:116:5:de_lti_set_window	12	static
+de_lti.c:141:5:de_lti_set_para	8	static
+de_lti.c:179:5:de_lti_info2para	8	static

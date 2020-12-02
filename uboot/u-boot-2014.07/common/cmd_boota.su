@@ -1,0 +1,6 @@
+cmd_boota.c:59:13:clean_timestamp_counter	0	static
+cmd_boota.c:84:6:get_arch_type	0	static
+cmd_boota.c:120:5:do_boota_linux	24	static
+cmd_boota.c:164:8:memcpy2	16	static
+cmd_boota.c:180:6:update_bootargs	2184	static
+cmd_boota.c:253:5:do_boota	64	static

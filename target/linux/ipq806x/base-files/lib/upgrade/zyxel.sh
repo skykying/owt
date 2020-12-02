@@ -118,7 +118,5 @@ zyxel_do_upgrade() {
 
 	zyxel_do_flash $tar_file $kernel $rootfs $dualflagmtd
 
-	nand_do_upgrade "$1"
-
 	return 0
 }

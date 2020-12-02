@@ -70,7 +70,6 @@ static char *progname;
 static char *board_name = 0;
 static char *version_name = 0;
 static unsigned int rootfs_size = 0;
-static unsigned int header_length = HEADER_PARTITION_LENGTH;
 
 static struct file_info kernel = { NULL, NULL, 0 };
 static struct file_info rootfs = { NULL, NULL, 0 };
@@ -145,7 +144,6 @@ void usage(int status)
             "  -v <version>    version string\n"
             "  -b <boardname>  name of board to generate image for\n"
             "  -o <out_name>   name of output image\n"
-            "  -l <hdr_length> length of header, default 65536\n"
             "  -h              show this screen\n"
     );
 
@@ -336,7 +334,7 @@ int build_image()
     board_header = generate_board_header(kernel_header, rootfs_header, board_name);
 
     /* Prepare output file */
-    out.size = header_length + rootfs_out.size;
+    out.size = HEADER_PARTITION_LENGTH + rootfs_out.size;
     if (kernel.name)
         out.size += kernel.size;
     out.data = malloc(out.size);
@@ -347,7 +345,7 @@ int build_image()
     memcpy(out.data + ROOTFS_HEADER_LEN, board_header, BOARD_HEADER_LEN);
     if (kernel.name)
         memcpy(out.data + ROOTFS_HEADER_LEN + BOARD_HEADER_LEN, kernel_header, KERNEL_HEADER_LEN);
-    ptr = header_length;
+    ptr = HEADER_PARTITION_LENGTH;
     memcpy(out.data + ptr, rootfs_out.data, rootfs_out.size);
     ptr += rootfs_out.size;
     if (kernel.name)
@@ -412,7 +410,7 @@ int main(int argc, char *argv[])
     while (1) {
         int c;
 
-        c = getopt(argc, argv, "b:k:o:r:s:v:l:h");
+        c = getopt(argc, argv, "b:k:o:r:s:v:h");
         if (c == -1)
             break;
 
@@ -437,9 +435,6 @@ int main(int argc, char *argv[])
                 break;
             case 'v':
                 version_name = optarg;
-                break;
-            case 'l':
-                sscanf(optarg, "%u", &header_length);
                 break;
             default:
                 usage(EXIT_FAILURE);

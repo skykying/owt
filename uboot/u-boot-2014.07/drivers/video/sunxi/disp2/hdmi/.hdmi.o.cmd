@@ -1,0 +1,1 @@
+cmd_drivers/video/sunxi/disp2/hdmi/hdmi.o := /aosp/brandy/u-boot-2014.07/../gcc-linaro/bin/arm-linux-gnueabi-ld.bfd     -r -o drivers/video/sunxi/disp2/hdmi/hdmi.o drivers/video/sunxi/disp2/hdmi/drv_hdmi.o drivers/video/sunxi/disp2/hdmi/hdmi_core.o drivers/video/sunxi/disp2/hdmi/hdmi_edid.o drivers/video/sunxi/disp2/hdmi/libhdmi_sun50iw1 

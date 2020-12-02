@@ -118,10 +118,10 @@ static const uint8_t md5_salt[16] = {
 
 /** Firmware layout table */
 static struct device_info boards[] = {
-	/** Firmware layout for the CPE210/220 V1 */
+	/** Firmware layout for the CPE210/220 */
 	{
-		.id     = "CPE210",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
+		.id	= "CPE210",
+		.vendor	= "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
 		.support_list =
 			"SupportList:\r\n"
 			"CPE210(TP-LINK|UN|N300-2):1.0\r\n"
@@ -140,8 +140,8 @@ static struct device_info boards[] = {
 			{"default-mac", 0x30000, 0x00020},
 			{"product-info", 0x31100, 0x00100},
 			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
+			{"os-image", 0x40000, 0x1c0000},
+			{"file-system", 0x200000, 0x5b0000},
 			{"soft-version", 0x7b0000, 0x00100},
 			{"support-list", 0x7b1000, 0x00400},
 			{"user-config", 0x7c0000, 0x10000},
@@ -231,91 +231,10 @@ static struct device_info boards[] = {
 		.last_sysupgrade_partition = "support-list",
 	},
 
-	/** Firmware layout for the CPE220 V2 */
-	{
-		.id     = "CPE220V2",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"CPE220(TP-LINK|EU|N300-2|00000000):2.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2|45550000):2.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2|55530000):2.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|00000000):2.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|45550000):2.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|55530000):2.0\r\n"
-			"CPE220(TP-LINK|US|N300-2|55530000):2.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2):2.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2):2.0\r\n"
-			"CPE220(TP-LINK|US|N300-2):2.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x00400},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
-	/** Firmware layout for the CPE220 V3 */
-	{
-		.id     = "CPE220V3",
-		.vendor = "CPE220(TP-LINK|UN|N300-2|00000000):3.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"CPE220(TP-LINK|EU|N300-2|00000000):3.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2|45550000):3.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2|55530000):3.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|00000000):3.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|45550000):3.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2|55530000):3.0\r\n"
-			"CPE220(TP-LINK|US|N300-2|55530000):3.0\r\n"
-			"CPE220(TP-LINK|UN|N300-2):3.0\r\n"
-			"CPE220(TP-LINK|EU|N300-2):3.0\r\n"
-			"CPE220(TP-LINK|US|N300-2):3.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"device-info", 0x31400, 0x00400},
-			{"signature", 0x32000, 0x00400},
-			{"device-id", 0x33000, 0x00100},
-			{"firmware", 0x40000, 0x770000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x01000},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
 	/** Firmware layout for the CPE510/520 V1 */
 	{
-		.id     = "CPE510",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
+		.id	= "CPE510",
+		.vendor	= "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
 		.support_list =
 			"SupportList:\r\n"
 			"CPE510(TP-LINK|UN|N300-5):1.0\r\n"
@@ -335,8 +254,8 @@ static struct device_info boards[] = {
 			{"default-mac", 0x30000, 0x00020},
 			{"product-info", 0x31100, 0x00100},
 			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
+			{"os-image", 0x40000, 0x1c0000},
+			{"file-system", 0x200000, 0x5b0000},
 			{"soft-version", 0x7b0000, 0x00100},
 			{"support-list", 0x7b1000, 0x00400},
 			{"user-config", 0x7c0000, 0x10000},
@@ -377,90 +296,8 @@ static struct device_info boards[] = {
 			{"default-mac", 0x30000, 0x00020},
 			{"product-info", 0x31100, 0x00100},
 			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x00400},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
-	/** Firmware layout for the CPE510 V3 */
-	{
-		.id     = "CPE510V3",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):3.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"CPE510(TP-LINK|EU|N300-5|00000000):3.0\r\n"
-			"CPE510(TP-LINK|EU|N300-5|45550000):3.0\r\n"
-			"CPE510(TP-LINK|EU|N300-5|55530000):3.0\r\n"
-			"CPE510(TP-LINK|UN|N300-5|00000000):3.0\r\n"
-			"CPE510(TP-LINK|UN|N300-5|45550000):3.0\r\n"
-			"CPE510(TP-LINK|UN|N300-5|55530000):3.0\r\n"
-			"CPE510(TP-LINK|US|N300-5|00000000):3.0\r\n"
-			"CPE510(TP-LINK|US|N300-5|45550000):3.0\r\n"
-			"CPE510(TP-LINK|US|N300-5|55530000):3.0\r\n"
-			"CPE510(TP-LINK|UN|N300-5):3.0\r\n"
-			"CPE510(TP-LINK|EU|N300-5):3.0\r\n"
-			"CPE510(TP-LINK|US|N300-5):3.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x00400},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
-	/** Firmware layout for the CPE610V1 */
-	{
-		.id     = "CPE610V1",
-		.vendor = "CPE610(TP-LINK|UN|N300-5|00000000):1.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"CPE610(TP-LINK|EU|N300-5|00000000):1.0\r\n"
-			"CPE610(TP-LINK|EU|N300-5|45550000):1.0\r\n"
-			"CPE610(TP-LINK|EU|N300-5|55530000):1.0\r\n"
-			"CPE610(TP-LINK|UN|N300-5|00000000):1.0\r\n"
-			"CPE610(TP-LINK|UN|N300-5|45550000):1.0\r\n"
-			"CPE610(TP-LINK|UN|N300-5|55530000):1.0\r\n"
-			"CPE610(TP-LINK|US|N300-5|55530000):1.0\r\n"
-			"CPE610(TP-LINK|UN|N300-5):1.0\r\n"
-			"CPE610(TP-LINK|EU|N300-5):1.0\r\n"
-			"CPE610(TP-LINK|US|N300-5):1.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
+			{"os-image", 0x40000, 0x1c0000},
+			{"file-system", 0x200000, 0x5b0000},
 			{"soft-version", 0x7b0000, 0x00100},
 			{"support-list", 0x7b1000, 0x00400},
 			{"user-config", 0x7c0000, 0x10000},
@@ -475,8 +312,8 @@ static struct device_info boards[] = {
 	},
 
 	{
-		.id     = "WBS210",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
+		.id	= "WBS210",
+		.vendor	= "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
 		.support_list =
 			"SupportList:\r\n"
 			"WBS210(TP-LINK|UN|N300-2):1.20\r\n"
@@ -491,8 +328,8 @@ static struct device_info boards[] = {
 			{"default-mac", 0x30000, 0x00020},
 			{"product-info", 0x31100, 0x00100},
 			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
+			{"os-image", 0x40000, 0x1c0000},
+			{"file-system", 0x200000, 0x5b0000},
 			{"soft-version", 0x7b0000, 0x00100},
 			{"support-list", 0x7b1000, 0x00400},
 			{"user-config", 0x7c0000, 0x10000},
@@ -507,46 +344,13 @@ static struct device_info boards[] = {
 	},
 
 	{
-		.id     = "WBS210V2",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"WBS210(TP-LINK|UN|N300-2|00000000):2.0\r\n"
-			"WBS210(TP-LINK|US|N300-2|55530000):2.0\r\n"
-			"WBS210(TP-LINK|EU|N300-2|45550000):2.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x00400},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
-	{
-		.id     = "WBS510",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
+		.id	= "WBS510",
+		.vendor	= "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
 		.support_list =
 			"SupportList:\r\n"
 			"WBS510(TP-LINK|UN|N300-5):1.20\r\n"
 			"WBS510(TP-LINK|US|N300-5):1.20\r\n"
-			"WBS510(TP-LINK|EU|N300-5):1.20\r\n"
-			"WBS510(TP-LINK|CA|N300-5):1.20\r\n",
+			"WBS510(TP-LINK|EU|N300-5):1.20\r\n",
 		.support_trail = '\xff',
 		.soft_ver = NULL,
 
@@ -556,41 +360,8 @@ static struct device_info boards[] = {
 			{"default-mac", 0x30000, 0x00020},
 			{"product-info", 0x31100, 0x00100},
 			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
-			{"soft-version", 0x7b0000, 0x00100},
-			{"support-list", 0x7b1000, 0x00400},
-			{"user-config", 0x7c0000, 0x10000},
-			{"default-config", 0x7d0000, 0x10000},
-			{"log", 0x7e0000, 0x10000},
-			{"radio", 0x7f0000, 0x10000},
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "support-list",
-	},
-
-	{
-		.id     = "WBS510V2",
-		.vendor = "CPE510(TP-LINK|UN|N300-5):1.0\r\n",
-		.support_list =
-			"SupportList:\r\n"
-			"WBS510(TP-LINK|UN|N300-5|00000000):2.0\r\n"
-			"WBS510(TP-LINK|US|N300-5|55530000):2.0\r\n"
-			"WBS510(TP-LINK|EU|N300-5|45550000):2.0\r\n"
-			"WBS510(TP-LINK|CA|N300-5|43410000):2.0\r\n",
-		.support_trail = '\xff',
-		.soft_ver = NULL,
-
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"partition-table", 0x20000, 0x02000},
-			{"default-mac", 0x30000, 0x00020},
-			{"product-info", 0x31100, 0x00100},
-			{"signature", 0x32000, 0x00400},
-			{"os-image", 0x40000, 0x200000},
-			{"file-system", 0x240000, 0x570000},
+			{"os-image", 0x40000, 0x1c0000},
+			{"file-system", 0x200000, 0x5b0000},
 			{"soft-version", 0x7b0000, 0x00100},
 			{"support-list", 0x7b1000, 0x00400},
 			{"user-config", 0x7c0000, 0x10000},
@@ -606,7 +377,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C2600 */
 	{
-		.id     = "C2600",
+		.id = "C2600",
 		.vendor = "",
 		.support_list =
 			"SupportList:\r\n"
@@ -654,7 +425,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the A7-V5 */
 	{
-		.id     = "ARCHER-A7-V5",
+		.id = "ARCHER-A7-V5",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:Archer A7,product_ver:5.0.0,special_id:45550000}\n"
@@ -694,7 +465,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C2v3 */
 	{
-		.id     = "ARCHER-C2-V3",
+		.id = "ARCHER-C2-V3",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:ArcherC2,product_ver:3.0.0,special_id:00000000}\n"
@@ -732,7 +503,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C25v1 */
 	{
-		.id     = "ARCHER-C25-V1",
+		.id = "ARCHER-C25-V1",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:ArcherC25,product_ver:1.0.0,special_id:00000000}\n"
@@ -770,8 +541,8 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C58v1 */
 	{
-		.id     = "ARCHER-C58-V1",
-		.vendor = "",
+		.id	= "ARCHER-C58-V1",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C58,product_ver:1.0.0,special_id:00000000}\r\n"
@@ -804,8 +575,8 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C59v1 */
 	{
-		.id     = "ARCHER-C59-V1",
-		.vendor = "",
+		.id	= "ARCHER-C59-V1",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C59,product_ver:1.0.0,special_id:00000000}\r\n"
@@ -843,8 +614,8 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C59v2 */
 	{
-		.id     = "ARCHER-C59-V2",
-		.vendor = "",
+		.id	= "ARCHER-C59-V2",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C59,product_ver:2.0.0,special_id:00000000}\r\n"
@@ -881,10 +652,10 @@ static struct device_info boards[] = {
 		.last_sysupgrade_partition = "file-system",
 	},
 
-	/** Firmware layout for the Archer C6 v2 (EU/RU/JP) */
+	/** Firmware layout for the C6v2 */
 	{
-		.id     = "ARCHER-C6-V2",
-		.vendor = "",
+		.id	= "ARCHER-C6-V2",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C6,product_ver:2.0.0,special_id:45550000}\r\n"
@@ -916,45 +687,11 @@ static struct device_info boards[] = {
 		.last_sysupgrade_partition = "file-system",
 	},
 
-	/** Firmware layout for the Archer C6 v2 (US) and A6 v2 (US/TW) */
-	{
-		.id     = "ARCHER-C6-V2-US",
-		.vendor = "",
-		.support_list =
-			"SupportList:\n"
-			"{product_name:Archer A6,product_ver:2.0.0,special_id:55530000}\n"
-			"{product_name:Archer A6,product_ver:2.0.0,special_id:54570000}\n"
-			"{product_name:Archer C6,product_ver:2.0.0,special_id:55530000}\n",
-		.support_trail = '\x00',
-		.soft_ver = "soft_ver:1.1.1\n",
-
-		.partitions = {
-			{"factory-boot", 0x00000, 0x20000},
-			{"default-mac", 0x20000, 0x00200},
-			{"pin", 0x20200, 0x00100},
-			{"product-info", 0x20300, 0x00200},
-			{"device-id", 0x20500, 0x0fb00},
-			{"fs-uboot", 0x30000, 0x20000},
-			{"firmware", 0x50000, 0xf89400},
-			{"soft-version", 0xfd9400, 0x00100},
-			{"extra-para", 0xfd9500, 0x00100},
-			{"support-list", 0xfd9600, 0x00200},
-			{"profile", 0xfd9800, 0x03000},
-			{"default-config", 0xfdc800, 0x03000},
-			{"partition-table", 0xfdf800, 0x00800},
-			{"user-config", 0xfe0000, 0x0c000},
-			{"certificate", 0xfec000, 0x04000},
-			{"radio", 0xff0000, 0x10000},
-			{NULL, 0, 0}
-		},
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "file-system",
-	},
 
 	/** Firmware layout for the C60v1 */
 	{
-		.id     = "ARCHER-C60-V1",
-		.vendor = "",
+		.id	= "ARCHER-C60-V1",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C60,product_ver:1.0.0,special_id:00000000}\r\n"
@@ -987,8 +724,8 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C60v2 */
 	{
-		.id     = "ARCHER-C60-V2",
-		.vendor = "",
+		.id	= "ARCHER-C60-V2",
+		.vendor	= "",
 		.support_list =
 			"SupportList:\r\n"
 			"{product_name:Archer C60,product_ver:2.0.0,special_id:42520000}\r\n"
@@ -1023,7 +760,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C5 */
 	{
-		.id     = "ARCHER-C5-V2",
+		.id = "ARCHER-C5-V2",
 		.vendor = "",
 		.support_list =
 			"SupportList:\r\n"
@@ -1058,7 +795,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C7 */
 	{
-		.id     = "ARCHER-C7-V4",
+		.id = "ARCHER-C7-V4",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:Archer C7,product_ver:4.0.0,special_id:00000000}\n"
@@ -1104,7 +841,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C7 v5*/
 	{
-		.id     = "ARCHER-C7-V5",
+		.id = "ARCHER-C7-V5",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:Archer C7,product_ver:5.0.0,special_id:00000000}\n"
@@ -1152,7 +889,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the C9 */
 	{
-		.id     = "ARCHERC9",
+		.id = "ARCHERC9",
 		.vendor = "",
 		.support_list =
 			"SupportList:\n"
@@ -1439,7 +1176,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the RE350 v1 */
 	{
-		.id     = "RE350-V1",
+		.id = "RE350-V1",
 		.vendor = "",
 		.support_list =
 			"SupportList:\n"
@@ -1476,7 +1213,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the RE350K v1 */
 	{
-		.id     = "RE350K-V1",
+		.id = "RE350K-V1",
 		.vendor = "",
 		.support_list =
 			"SupportList:\n"
@@ -1508,7 +1245,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the RE355 */
 	{
-		.id     = "RE355",
+		.id = "RE355",
 		.vendor = "",
 		.support_list =
 			"SupportList:\r\n"
@@ -1546,7 +1283,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the RE450 */
 	{
-		.id     = "RE450",
+		.id = "RE450",
 		.vendor = "",
 		.support_list =
 			"SupportList:\r\n"
@@ -1584,7 +1321,7 @@ static struct device_info boards[] = {
 
 	/** Firmware layout for the RE450 v2 */
 	{
-		.id     = "RE450-V2",
+		.id = "RE450-V2",
 		.vendor = "",
 		.support_list =
 			"SupportList:\r\n"
@@ -1615,43 +1352,6 @@ static struct device_info boards[] = {
 			{"default-config", 0x640000, 0x10000},
 			{"radio", 0x7f0000, 0x10000},
 
-			{NULL, 0, 0}
-		},
-
-		.first_sysupgrade_partition = "os-image",
-		.last_sysupgrade_partition = "file-system"
-	},
-
-	/** Firmware layout for the RE650 */
-	{
-		.id     = "RE650-V1",
-		.vendor = "",
-		.support_list =
-			"SupportList:\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:00000000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:55530000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:45550000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:4A500000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:43410000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:41550000}\r\n"
-			"{product_name:RE650,product_ver:1.0.0,special_id:41530000}\r\n",
-		.support_trail = '\x00',
-		.soft_ver = NULL,
-
-		/* We're using a dynamic kernel/rootfs split here */
-		.partitions = {
-			{"fs-uboot", 0x00000, 0x20000},
-			{"firmware", 0x20000, 0xde0000},
-			{"partition-table", 0xe00000, 0x02000},
-			{"default-mac", 0xe10000, 0x00020},
-			{"pin", 0xe10100, 0x00020},
-			{"product-info", 0xe11100, 0x01000},
-			{"soft-version", 0xe20000, 0x01000},
-			{"support-list", 0xe21000, 0x01000},
-			{"profile", 0xe22000, 0x08000},
-			{"user-config", 0xe30000, 0x10000},
-			{"default-config", 0xe40000, 0x10000},
-			{"radio", 0xff0000, 0x10000},
 			{NULL, 0, 0}
 		},
 
@@ -1698,13 +1398,13 @@ static void set_source_date_epoch() {
 	char *env = getenv("SOURCE_DATE_EPOCH");
 	char *endptr = env;
 	errno = 0;
-	if (env && *env) {
+        if (env && *env) {
 		source_date_epoch = strtoull(env, &endptr, 10);
 		if (errno || (endptr && *endptr != '\0')) {
 			fprintf(stderr, "Invalid SOURCE_DATE_EPOCH");
 			exit(1);
 		}
-	}
+        }
 }
 
 /** Generates the partition-table partition */
@@ -2102,9 +1802,6 @@ static void build_image(const char *output,
 		parts[5] = put_data("extra-para", mdat, 11);
 	} else if (strcasecmp(info->id, "ARCHER-C6-V2") == 0) {
 		const char mdat[11] = {0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00};
-		parts[5] = put_data("extra-para", mdat, 11);
-	} else if (strcasecmp(info->id, "ARCHER-C6-V2-US") == 0) {
-		const char mdat[11] = {0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00};
 		parts[5] = put_data("extra-para", mdat, 11);
 	}
 

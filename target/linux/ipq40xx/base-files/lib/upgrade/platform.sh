@@ -47,23 +47,11 @@ zyxel_do_upgrade() {
 platform_do_upgrade() {
 	case "$(board_name)" in
 	8dev,jalapeno |\
-	aruba,ap-303 |\
+	alfa-network,ap120c-ac |\
 	avm,fritzbox-7530 |\
 	avm,fritzrepeater-1200 |\
 	avm,fritzrepeater-3000 |\
-	cilab,meshpoint-one |\
 	qxwlan,e2600ac-c2)
-		nand_do_upgrade "$1"
-		;;
-	alfa-network,ap120c-ac)
-		part="$(awk -F 'ubi.mtd=' '{printf $2}' /proc/cmdline | sed -e 's/ .*$//')"
-		if [ "$part" = "rootfs1" ]; then
-			fw_setenv active 2 || exit 1
-			CI_UBIPART="rootfs2"
-		else
-			fw_setenv active 1 || exit 1
-			CI_UBIPART="rootfs1"
-		fi
 		nand_do_upgrade "$1"
 		;;
 	asus,map-ac2200)
@@ -73,9 +61,6 @@ platform_do_upgrade() {
 	asus,rt-ac58u)
 		CI_UBIPART="UBI_DEV"
 		CI_KERNPART="linux"
-		nand_do_upgrade "$1"
-		;;
-	compex,wpj419)
 		nand_do_upgrade "$1"
 		;;
 	linksys,ea6350v3 |\
@@ -96,6 +81,28 @@ platform_do_upgrade() {
 		;;
 	*)
 		default_do_upgrade "$1"
+		;;
+	esac
+}
+
+platform_nand_pre_upgrade() {
+	case "$(board_name)" in
+	alfa-network,ap120c-ac)
+		part="$(awk -F 'ubi.mtd=' '{printf $2}' /proc/cmdline | sed -e 's/ .*$//')"
+		if [ "$part" = "rootfs1" ]; then
+			fw_setenv active 2 || exit 1
+			CI_UBIPART="rootfs2"
+		else
+			fw_setenv active 1 || exit 1
+			CI_UBIPART="rootfs1"
+		fi
+		;;
+	asus,rt-ac58u)
+		CI_UBIPART="UBI_DEV"
+		CI_KERNPART="linux"
+		;;
+	meraki,mr33)
+		CI_KERNPART="part.safe"
 		;;
 	esac
 }

@@ -581,7 +581,6 @@ static void ath79_mii0_ctrl_set_if(struct ag71xx *ag)
 		mii_if = AR71XX_MII0_CTRL_IF_GMII;
 		break;
 	case PHY_INTERFACE_MODE_RGMII:
-	case PHY_INTERFACE_MODE_RGMII_ID:
 		mii_if = AR71XX_MII0_CTRL_IF_RGMII;
 		break;
 	case PHY_INTERFACE_MODE_RMII:
@@ -604,7 +603,6 @@ static void ath79_mii1_ctrl_set_if(struct ag71xx *ag)
 		mii_if = AR71XX_MII1_CTRL_IF_RMII;
 		break;
 	case PHY_INTERFACE_MODE_RGMII:
-	case PHY_INTERFACE_MODE_RGMII_ID:
 		mii_if = AR71XX_MII1_CTRL_IF_RGMII;
 		break;
 	default:

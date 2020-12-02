@@ -1,0 +1,8 @@
+de_peak.c:30:5:de_peak_set_reg_base	0	static
+de_peak.c:38:5:de_peak_update_regs	16	static
+de_peak.c:52:5:de_peak_init	16	static
+de_peak.c:91:5:de_peak_enable	0	static
+de_peak.c:110:5:de_peak_set_size	0	static
+de_peak.c:129:5:de_peak_set_window	12	static
+de_peak.c:158:5:de_peak_set_para	0	static
+de_peak.c:186:5:de_peak_info2para	56	static

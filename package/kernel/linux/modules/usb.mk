@@ -72,7 +72,7 @@ $(eval $(call KernelPackage,usb-phy-nop))
 
 define KernelPackage/usb-phy-qcom-dwc3
   TITLE:=DWC3 USB QCOM PHY driver
-  DEPENDS:=@(TARGET_ipq40xx||TARGET_ipq806x)
+  DEPENDS:=@(TARGET_ipq40xx||TARGET_ipq806x) +kmod-usb-dwc3-of-simple
   KCONFIG:= CONFIG_PHY_QCOM_DWC3
   FILES:= \
     $(LINUX_DIR)/drivers/phy/phy-qcom-dwc3.ko@lt4.13 \
@@ -480,7 +480,7 @@ $(eval $(call KernelPackage,usb-dwc3))
 
 define KernelPackage/usb-dwc3-of-simple
   TITLE:=DWC3 USB simple OF driver
-  DEPENDS:=@LINUX_4_14 @(TARGET_ipq40xx||TARGET_ipq806x) +kmod-usb-dwc3
+  DEPENDS:=@!LINUX_4_19 @(TARGET_ipq40xx||TARGET_ipq806x) +kmod-usb-dwc3
   KCONFIG:= CONFIG_USB_DWC3_OF_SIMPLE
   FILES:= $(LINUX_DIR)/drivers/usb/dwc3/dwc3-of-simple.ko
   AUTOLOAD:=$(call AutoLoad,53,dwc3-of-simple,1)
@@ -1399,7 +1399,7 @@ define KernelPackage/usb-net-cdc-mbim
 endef
 
 define KernelPackage/usb-net-cdc-mbim/description
- Kernel module for CDC MBIM (Mobile Broadband Interface Model) devices
+ Kernel module for Option USB High Speed Mobile Devices
 endef
 
 $(eval $(call KernelPackage,usb-net-cdc-mbim))
@@ -1674,6 +1674,7 @@ define KernelPackage/usb3
 	CONFIG_USB_XHCI_HCD \
 	CONFIG_USB_XHCI_PCI \
 	CONFIG_USB_XHCI_PLATFORM \
+	CONFIG_USB_XHCI_MVEBU=y \
 	CONFIG_USB_XHCI_MTK \
 	CONFIG_USB_XHCI_HCD_DEBUGGING=n
   FILES:= \

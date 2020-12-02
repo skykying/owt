@@ -1,0 +1,3 @@
+sprite_recovery.c:47:9:Img_Open_from_sysrecovery	16	static
+sprite_recovery.c:117:6:card_part_info	16416	static
+sprite_recovery.c:153:5:sprite_form_sysrecovery	32	static

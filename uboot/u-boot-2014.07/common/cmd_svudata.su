@@ -1,0 +1,3 @@
+cmd_svudata.c:430:5:do_probe_secure_storage	4128	static
+cmd_svudata.c:631:6:check_user_data	64	static
+cmd_svudata.c:533:5:update_user_data	552	static

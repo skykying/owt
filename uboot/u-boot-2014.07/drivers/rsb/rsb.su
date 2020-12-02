@@ -1,0 +1,7 @@
+rsb.c:657:12:sunxi_rsb_io_null	0	static
+rsb.c:680:12:sunxi_rsb_write_secos	0	static
+rsb.c:668:12:sunxi_rsb_read_secos	8	static
+rsb.c:687:5:sunxi_rsb_read	8	static
+rsb.c:692:5:sunxi_rsb_write	8	static
+rsb.c:697:5:sunxi_rsb_config	0	static
+rsb.c:703:5:sunxi_rsb_init	8	static

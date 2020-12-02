@@ -1,0 +1,8 @@
+de_fcc.c:30:5:de_fcc_set_reg_base	0	static
+de_fcc.c:37:5:de_fcc_init	16	static
+de_fcc.c:60:5:de_fcc_update_regs	8	static
+de_fcc.c:80:5:de_fcc_enable	0	static
+de_fcc.c:99:5:de_fcc_set_size	8	static
+de_fcc.c:120:5:de_fcc_set_window	12	static
+de_fcc.c:147:5:de_fcc_set_para	16	static
+de_fcc.c:167:5:de_fcc_info2para	104	static

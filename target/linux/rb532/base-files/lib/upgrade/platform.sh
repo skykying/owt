@@ -10,8 +10,11 @@ platform_check_image() {
 	return 0;
 }
 
-platform_do_upgrade() {
+platform_nand_pre_upgrade() {
 	mtd erase kernel
 	tar xf "$1" "sysupgrade-$(board_name)/kernel" -O | nandwrite -o /dev/mtd0 -
+}
+
+platform_do_upgrade() {
 	nand_do_upgrade "$1"
 }

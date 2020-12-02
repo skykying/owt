@@ -28,7 +28,6 @@
 		led-failsafe = &system_green;
 		led-running = &system_green;
 		led-upgrade = &system_green;
-		label-mac-device = &enet0;
 	};
 
 	memory {

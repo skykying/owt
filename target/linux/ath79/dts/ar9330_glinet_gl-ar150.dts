@@ -12,16 +12,15 @@
 
 	aliases {
 		serial0 = &uart;
-		led-boot = &led_wlan;
-		led-failsafe = &led_wlan;
-		led-upgrade = &led_wlan;
-		label-mac-device = &eth0;
+		led-boot = &wlan;
+		led-failsafe = &wlan;
+		led-upgrade = &wlan;
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		led_wlan: wlan {
+		wlan: wlan {
 			label = "gl-ar150:orange:wlan";
 			gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "phy0tpt";
@@ -39,7 +38,8 @@
 	};
 
 	keys {
-		compatible = "gpio-keys";
+		compatible = "gpio-keys-polled";
+		poll-interval = <100>;
 
 		manual {
 			label = "manual";
@@ -80,9 +80,8 @@
 };
 
 &spi {
-	status = "okay";
-
 	num-chipselects = <1>;
+	status = "okay";
 
 	flash@0 {
 		compatible = "jedec,spi-nor";
@@ -141,7 +140,6 @@
 
 &wmac {
 	status = "okay";
-
 	mtd-cal-data = <&art 0x1000>;
 	mtd-mac-address = <&art 0x0>;
 };

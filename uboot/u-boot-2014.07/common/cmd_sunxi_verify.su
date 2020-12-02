@@ -1,0 +1,6 @@
+cmd_sunxi_verify.c:388:12:sunxi_certif_pubkey_check	1072	static
+cmd_sunxi_verify.c:91:5:sunxi_verify_signature	216	static
+cmd_sunxi_verify.c:170:5:sunxi_verify_embed_signature	376	static
+cmd_sunxi_verify.c:237:5:sunxi_verify_rotpk_hash	208	static
+cmd_sunxi_verify.c:472:5:do_rotpk_test	40	static
+cmd_sunxi_verify.c:306:5:sunxi_key_ladder_verify_rotpk_hash	64	static

@@ -109,13 +109,10 @@ endef
 # append a fake/empty uImage header, to fool bootloaders rootfs integrity check
 # for example
 define Build/append-uImage-fakehdr
-	$(eval type=$(word 1,$(1)))
-	$(eval magic=$(word 2,$(1)))
 	touch $@.fakehdr
 	$(STAGING_DIR_HOST)/bin/mkimage \
-		-A $(LINUX_KARCH) -O linux -T $(type) -C none \
-		-n '$(VERSION_DIST) fake $(type)' \
-		$(if $(magic),-M $(magic)) \
+		-A $(LINUX_KARCH) -O linux -T $(1) -C none \
+		-n '$(VERSION_DIST) fake $(1)' \
 		-d $@.fakehdr \
 		-s \
 		$@.fakehdr
@@ -139,13 +136,10 @@ define Build/append-dtb
 endef
 
 define Build/install-dtb
-	$(call locked, \
-		$(foreach dts,$(DEVICE_DTS), \
-			$(CP) \
-				$(DTS_DIR)/$(dts).dtb \
-				$(BIN_DIR)/$(IMG_PREFIX)-$(dts).dtb; \
-		), \
-		install-dtb-$(IMG_PREFIX) \
+	$(foreach dts,$(DEVICE_DTS), \
+		$(CP) \
+			$(DTS_DIR)/$(dts).dtb \
+			$(BIN_DIR)/$(IMG_PREFIX)-$(dts).dtb; \
 	)
 endef
 
@@ -236,7 +230,8 @@ define Build/append-uboot
 endef
 
 define Build/pad-to
-	$(call Image/pad-to,$@,$(1))
+	dd if=$@ of=$@.new bs=$(1) conv=sync
+	mv $@.new $@
 endef
 
 define Build/pad-extra

@@ -1,0 +1,10 @@
+S070WV20_MIPI_RGB.c:327:12:LCD_user_defined_func	0	static
+S070WV20_MIPI_RGB.c:96:12:LCD_close_flow	8	static
+S070WV20_MIPI_RGB.c:162:13:LCD_power_off	8	static
+S070WV20_MIPI_RGB.c:319:13:LCD_panel_exit	0	static
+S070WV20_MIPI_RGB.c:186:13:LCD_bl_close	8	static
+S070WV20_MIPI_RGB.c:82:12:LCD_open_flow	8	static
+S070WV20_MIPI_RGB.c:178:13:LCD_bl_open	8	static
+S070WV20_MIPI_RGB.c:193:13:LCD_panel_init	8	static
+S070WV20_MIPI_RGB.c:110:13:LCD_power_on	8	static
+S070WV20_MIPI_RGB.c:25:13:LCD_cfg_panel_info	168	static

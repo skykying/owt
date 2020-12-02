@@ -128,23 +128,6 @@ endef
 $(eval $(call KernelPackage,geneve))
 
 
-define KernelPackage/nsh
-  SUBMENU:=$(NETWORK_SUPPORT_MENU)
-  TITLE:=Network Service Header (NSH) protocol
-  DEPENDS:=
-  KCONFIG:=CONFIG_NET_NSH
-  FILES:=$(LINUX_DIR)/net/nsh/nsh.ko@ge4.14
-  AUTOLOAD:=$(call AutoLoad,13,nsh)
-endef
-
-define KernelPackage/nsh/description
-  Network Service Header is an implementation of Service Function
-  Chaining (RFC 7665).  Requires kernel 4.14 or newer
-endef
-
-$(eval $(call KernelPackage,nsh))
-
-
 define KernelPackage/capi
   SUBMENU:=$(NETWORK_SUPPORT_MENU)
   TITLE:=CAPI (ISDN) Support
@@ -403,10 +386,10 @@ $(eval $(call KernelPackage,ip6-vti))
 define KernelPackage/xfrm-interface
   SUBMENU:=$(NETWORK_SUPPORT_MENU)
   TITLE:=IPsec XFRM Interface
-  DEPENDS:=+kmod-ipsec4 +kmod-ipsec6 @!LINUX_4_14 @!LINUX_4_9
+  DEPENDS:=+kmod-ipsec4 +kmod-ipsec6 @!LINUX_4_14
   KCONFIG:=CONFIG_XFRM_INTERFACE
   FILES:=$(LINUX_DIR)/net/xfrm/xfrm_interface.ko
-  AUTOLOAD:=$(call AutoProbe,xfrm_interface)
+  AUTOLOAD:=$(call AutoLoad,33,xfrm_interface)
 endef
 
 define KernelPackage/xfrm-interface/description
@@ -733,7 +716,7 @@ $(eval $(call KernelPackage,ipoa))
 define KernelPackage/mppe
   SUBMENU:=$(NETWORK_SUPPORT_MENU)
   TITLE:=Microsoft PPP compression/encryption
-  DEPENDS:=kmod-ppp +kmod-crypto-arc4 +kmod-crypto-sha1 +kmod-crypto-ecb
+  DEPENDS:=kmod-ppp +kmod-crypto-sha1 +kmod-crypto-ecb
   KCONFIG:= \
 	CONFIG_PPP_MPPE_MPPC \
 	CONFIG_PPP_MPPE

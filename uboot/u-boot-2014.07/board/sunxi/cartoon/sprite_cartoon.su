@@ -1,0 +1,6 @@
+sprite_cartoon.c:54:5:sprite_cartoon_screen_set	8	static
+sprite_cartoon.c:129:5:sprite_cartoon_test	32	static
+sprite_cartoon.c:320:5:do_sunxi_screen_char	0	static
+sprite_cartoon.c:217:6:sprite_cartoon_create	24	static
+sprite_cartoon.c:281:5:sprite_cartoon_upgrade	8	static
+sprite_cartoon.c:311:5:sprite_cartoon_destroy	8	static

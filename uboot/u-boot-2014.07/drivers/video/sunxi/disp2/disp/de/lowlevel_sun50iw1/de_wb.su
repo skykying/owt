@@ -1,0 +1,12 @@
+de_wb.c:44:5:WB_EBIOS_Set_Reg_Base	0	static
+de_wb.c:61:11:WB_EBIOS_Get_Reg_Base	0	static
+de_wb.c:79:5:WB_EBIOS_Init	0	static
+de_wb.c:95:5:WB_EBIOS_Writeback_Enable	0	static
+de_wb.c:114:5:WB_EBIOS_Apply	8	static
+de_wb.c:148:5:WB_EBIOS_Set_Para	96	static
+de_wb.c:129:5:WB_EBIOS_Update_Regs	8	static
+de_wb.c:361:5:WB_EBIOS_Get_Status	0	static
+de_wb.c:387:5:WB_EBIOS_EnableINT	0	static
+de_wb.c:393:5:WB_EBIOS_DisableINT	0	static
+de_wb.c:399:5:WB_EBIOS_QueryINT	0	static
+de_wb.c:405:5:WB_EBIOS_ClearINT	0	static

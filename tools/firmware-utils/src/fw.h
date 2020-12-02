@@ -27,7 +27,6 @@
 #define MAGIC_ENDS	"ENDS"
 
 #define MAGIC_LENGTH	4
-#define PART_NAME_LENGTH 16
 
 typedef struct header {
 	char magic[MAGIC_LENGTH];
@@ -38,7 +37,7 @@ typedef struct header {
 
 typedef struct part {
 	char magic[MAGIC_LENGTH];
-	char name[PART_NAME_LENGTH];
+	char name[16];
 	char pad[12];
 	u_int32_t memaddr;
 	u_int32_t index;

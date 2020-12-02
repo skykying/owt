@@ -12,6 +12,8 @@
 /logs
 /feeds
 /feeds.conf
+/resp
+/ramdisk
 /files
 /overlay
 /package/feeds

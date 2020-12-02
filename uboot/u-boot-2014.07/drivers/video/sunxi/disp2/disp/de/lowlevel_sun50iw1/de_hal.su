@@ -1,0 +1,8 @@
+de_hal.c:6:5:de_update_device_fps	0	static
+de_hal.c:181:5:de_al_lyr_apply	1824	static
+de_hal.c:419:5:de_al_mgr_apply	136	static
+de_hal.c:463:5:de_al_mgr_sync	0	static
+de_hal.c:469:5:de_al_mgr_update_regs	8	static
+de_hal.c:483:5:de_al_query_irq	0	static
+de_hal.c:488:5:de_al_enable_irq	0	static
+de_hal.c:493:5:de_al_init	16	static

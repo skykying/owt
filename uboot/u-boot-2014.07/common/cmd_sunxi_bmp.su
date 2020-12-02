@@ -1,0 +1,8 @@
+cmd_sunxi_bmp.c:49:12:do_sunxi_bmp_info	88	static
+cmd_sunxi_bmp.c:508:12:sunxi_bmp_show	24	static
+cmd_sunxi_bmp.c:377:5:sunxi_bmp_dipslay_screen	16	static
+cmd_sunxi_bmp.c:423:5:sunxi_bmp_decode	56	static
+cmd_sunxi_bmp.c:99:12:do_sunxi_bmp_display	104	static
+cmd_sunxi_bmp.c:360:5:sunxi_bmp_display_mem	16	static
+cmd_sunxi_bmp.c:314:5:sunxi_bmp_display	120	static
+cmd_sunxi_bmp.c:524:5:do_sunxi_logo	0	static

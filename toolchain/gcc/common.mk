@@ -40,10 +40,6 @@ ifeq ($(PKG_VERSION),8.3.0)
   PKG_HASH:=64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
 endif
 
-ifeq ($(PKG_VERSION),9.2.0)
-  PKG_HASH:=ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206
-endif
-
 PATCH_DIR=../patches/$(GCC_VERSION)
 
 BUGURL=http://bugs.openwrt.org/
@@ -89,7 +85,7 @@ endif
 
 GCC_CONFIGURE:= \
 	SHELL="$(BASH)" \
-	$(if $(shell gcc --version 2>&1 | grep -E "Apple.(LLVM|clang)"), \
+	$(if $(shell gcc --version 2>&1 | grep LLVM), \
 		CFLAGS="-O2 -fbracket-depth=512 -pipe" \
 		CXXFLAGS="-O2 -fbracket-depth=512 -pipe" \
 	) \

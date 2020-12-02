@@ -1,0 +1,8 @@
+de_ase.c:29:5:de_ase_set_reg_base	0	static
+de_ase.c:36:5:de_ase_update_regs	8	static
+de_ase.c:45:5:de_ase_init	16	static
+de_ase.c:79:5:de_ase_enable	0	static
+de_ase.c:97:5:de_ase_set_size	0	static
+de_ase.c:116:5:de_ase_set_window	12	static
+de_ase.c:141:5:de_ase_set_para	0	static
+de_ase.c:158:5:de_ase_info2para	32	static

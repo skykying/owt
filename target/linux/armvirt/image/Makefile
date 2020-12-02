@@ -19,16 +19,10 @@ define Image/Build/Initramfs
 	)
 endef
 
-define Image/Build/gzip
-	gzip -f9n $(BIN_DIR)/$(IMG_ROOTFS)-$(1).img
-endef
-
-$(eval $(call Image/gzip-ext4-padded-squashfs))
-
 define Image/Build
 	$(call Image/Build/$(1))
-	$(CP) $(KDIR)/root.$(1) $(BIN_DIR)/$(IMG_ROOTFS)-$(1).img
-	$(call Image/Build/gzip/$(1))
+	dd if=$(KDIR)/root.$(1) bs=128k conv=sync | \
+		gzip -9n >$(BIN_DIR)/$(IMG_PREFIX)-root.$(1).gz
 endef
 
 $(eval $(call BuildImage))

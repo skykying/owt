@@ -1,0 +1,10 @@
+WilliamLcd.c:410:14:LCD_user_defined_func	0	static
+WilliamLcd.c:88:14:LCD_close_flow	8	static
+WilliamLcd.c:121:13:LCD_power_off	8	static
+WilliamLcd.c:402:13:LCD_panel_exit	0	static
+WilliamLcd.c:139:13:LCD_bl_close	8	static
+WilliamLcd.c:74:14:LCD_open_flow	8	static
+WilliamLcd.c:131:13:LCD_bl_open	8	static
+WilliamLcd.c:379:13:LCD_panel_init	24	static
+WilliamLcd.c:102:13:LCD_power_on	8	static
+WilliamLcd.c:14:13:LCD_cfg_panel_info	168	static

@@ -1,0 +1,15 @@
+de_fce.c:47:5:de_fce_set_reg_base	0	static
+de_fce.c:54:5:de_fce_update_regs	16	static
+de_fce.c:73:5:de_fce_init	32	static
+de_fce.c:162:5:de_fce_enable	0	static
+de_fce.c:180:5:de_fce_set_size	0	static
+de_fce.c:199:5:de_fce_set_window	12	static
+de_fce.c:224:5:de_fce_csc_en	0	static
+de_fce.c:243:5:de_fce_set_para	0	static
+de_fce.c:271:5:de_fce_get_hist	16	static
+de_fce.c:295:5:de_fce_set_ce	16	static
+de_fce.c:313:5:de_fce_info2para	120	static
+de_fce.c:874:5:de_hist_apply	8	static
+de_fce.c:895:5:de_hist_tasklet	24	static
+de_fce.c:915:5:de_ce_apply	16	static
+de_fce.c:956:5:de_ce_tasklet	104	static

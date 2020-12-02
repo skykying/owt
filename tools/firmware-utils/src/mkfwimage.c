@@ -19,7 +19,6 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <inttypes.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
@@ -231,10 +230,9 @@ static int write_part(void* mem, part_data_t* d)
 	memcpy(mem + sizeof(part_t), addr, d->stats.st_size);
 	munmap(addr, d->stats.st_size);
 
-	memset(p->name, 0, PART_NAME_LENGTH);
-	memcpy(p->magic, MAGIC_PART, MAGIC_LENGTH);
-	memcpy(p->name, d->partition_name, PART_NAME_LENGTH);
-
+	memset(p->name, 0, sizeof(p->name));
+	strncpy(p->magic, MAGIC_PART, MAGIC_LENGTH);
+	strncpy(p->name, d->partition_name, sizeof(p->name));
 	p->index = htonl(d->partition_index);
 	p->data_size = htonl(d->stats.st_size);
 	p->part_size = htonl(d->partition_length);
@@ -264,8 +262,7 @@ static void usage(const char* progname)
 
 static void print_image_info(const image_info_t* im)
 {
-	unsigned int i = 0;
-
+	int i = 0;
 	INFO("Firmware version: '%s'\n"
 	     "Output file: '%s'\n"
 	     "Part count: %u\n",
@@ -275,12 +272,14 @@ static void print_image_info(const image_info_t* im)
 	for (i = 0; i < im->part_count; ++i)
 	{
 		const part_data_t* d = &im->parts[i];
-		INFO(" %10s: %8" PRId64 " bytes (free: %8" PRId64 ")\n",
+		INFO(" %10s: %8ld bytes (free: %8ld)\n",
 		     d->partition_name,
 		     d->stats.st_size,
 		     d->partition_length - d->stats.st_size);
 	}
 }
+
+
 
 static u_int32_t filelength(const char* file)
 {
@@ -297,9 +296,8 @@ static u_int32_t filelength(const char* file)
 	return (ret);
 }
 
-static int create_image_layout(const char* kernelfile, const char* rootfsfile, image_info_t* im)
+static int create_image_layout(const char* kernelfile, const char* rootfsfile, char* board_name, image_info_t* im)
 {
-	uint32_t rootfs_len = 0;
 	part_data_t* kernel = &im->parts[0];
 	part_data_t* rootfs = &im->parts[1];
 
@@ -314,13 +312,8 @@ static int create_image_layout(const char* kernelfile, const char* rootfsfile, i
 	kernel->partition_entryaddr = p->kern_entry;
 	strncpy(kernel->filename, kernelfile, sizeof(kernel->filename));
 
-	rootfs_len = filelength(rootfsfile);
-	if (rootfs_len + kernel->partition_length > p->firmware_max_length) {
-		ERROR("File '%s' too big (0x%08X) - max size: 0x%08X (exceeds %u bytes)\n",
-		       rootfsfile, rootfs_len, p->firmware_max_length,
-		       (rootfs_len + kernel->partition_length) - p->firmware_max_length);
+	if (filelength(rootfsfile) + kernel->partition_length > p->firmware_max_length)
 		return (-2);
-	}
 
 	strcpy(rootfs->partition_name, "rootfs");
 	rootfs->partition_index = 2;
@@ -343,7 +336,7 @@ static int create_image_layout(const char* kernelfile, const char* rootfsfile, i
  */
 static int validate_image_layout(image_info_t* im)
 {
-	unsigned int i;
+	int i;
 
 	if (im->part_count == 0 || im->part_count > MAX_SECTIONS)
 	{
@@ -374,7 +367,7 @@ static int validate_image_layout(image_info_t* im)
 			return -3;
 		}
 		if (d->stats.st_size > d->partition_length) {
-			ERROR("File '%s' too big (%d) - max size: 0x%08X (exceeds %" PRId64 " bytes)\n",
+			ERROR("File '%s' too big (%d) - max size: 0x%08X (exceeds %lu bytes)\n",
 				       	d->filename, i, d->partition_length,
 					d->stats.st_size - d->partition_length);
 			return -4;
@@ -390,7 +383,7 @@ static int build_image(image_info_t* im)
 	char* ptr;
 	u_int32_t mem_size;
 	FILE* f;
-	unsigned int i;
+	int i;
 
 	// build in-memory buffer
 	mem_size = sizeof(header_t);
@@ -476,30 +469,30 @@ int main(int argc, char* argv[])
 		switch (o) {
 		case 'v':
 			if (optarg)
-				strncpy(im.version, optarg, sizeof(im.version) - 1);
+				strncpy(im.version, optarg, sizeof(im.version));
 			break;
 		case 'o':
 			if (optarg)
-				strncpy(im.outputfile, optarg, sizeof(im.outputfile) - 1);
+				strncpy(im.outputfile, optarg, sizeof(im.outputfile));
 			break;
 		case 'm':
 			if (optarg)
-				strncpy(im.magic, optarg, sizeof(im.magic) - 1);
+				strncpy(im.magic, optarg, sizeof(im.magic));
 			break;
 		case 'h':
 			usage(argv[0]);
 			return -1;
 		case 'k':
 			if (optarg)
-				strncpy(kernelfile, optarg, sizeof(kernelfile) - 1);
+				strncpy(kernelfile, optarg, sizeof(kernelfile));
 			break;
 		case 'r':
 			if (optarg)
-				strncpy(rootfsfile, optarg, sizeof(rootfsfile) - 1);
+				strncpy(rootfsfile, optarg, sizeof(rootfsfile));
 			break;
 		case 'B':
 			if (optarg)
-				strncpy(board_name, optarg, sizeof(board_name) - 1);
+				strncpy(board_name, optarg, sizeof(board_name));
 			break;
 		}
 	}
@@ -528,7 +521,7 @@ int main(int argc, char* argv[])
 
 	im.fwinfo = fwinfo;
 
-	if ((rc = create_image_layout(kernelfile, rootfsfile, &im)) != 0)
+	if ((rc = create_image_layout(kernelfile, rootfsfile, board_name, &im)) != 0)
 	{
 		ERROR("Failed creating firmware layout description - error code: %d\n", rc);
 		return -3;

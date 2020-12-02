@@ -1,0 +1,1 @@
+cmd_nand_sunxi/sun50iw1p1/osal/built-in.o :=  /aosp/brandy/u-boot-2014.07/../gcc-linaro/bin/arm-linux-gnueabi-ld.bfd     -r -o nand_sunxi/sun50iw1p1/osal/built-in.o nand_sunxi/sun50iw1p1/osal/nand_osal_uboot.o nand_sunxi/sun50iw1p1/osal/nand_uboot_fun.o nand_sunxi/sun50iw1p1/osal/nand_lib_cfg.o 

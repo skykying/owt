@@ -164,25 +164,21 @@ define Device/standard-noloader-nodictionarylzma
 endef
 
 define Device/asus
-	DEVICE_VENDOR := ASUS
 	IMAGES := trx
 	IMAGE/trx := append-rootfs | trx-with-loader | asus-trx
 endef
 
 define Device/linksys
-	DEVICE_VENDOR := Linksys
 	IMAGES := bin
 	IMAGE/bin := append-rootfs | trx-with-loader | linksys-bin
 endef
 
 define Device/motorola
-	DEVICE_VENDOR := Motorola
 	IMAGES := bin
 	IMAGE/bin := append-rootfs | trx-with-loader | motorola-bin
 endef
 
 define Device/netgear
-	DEVICE_VENDOR := NETGEAR
 	IMAGES := chk
 	IMAGE/chk := append-rootfs | trx-with-loader | netgear-chk
 endef
@@ -194,8 +190,7 @@ endef
 ifeq ($(SUBTARGET),generic)
   # BCM4705 with tg3
 define Device/linksys-wrt300n-v1.1
-  DEVICE_MODEL := WRT300N
-  DEVICE_VARIANT := v1.1
+  DEVICE_TITLE := Linksys WRT300N v1.1
   DEVICE_PACKAGES := kmod-tg3 kmod-b43
   $(Device/linksys)
   DEVICE_ID := EWC2
@@ -204,8 +199,7 @@ endef
 TARGET_DEVICES += linksys-wrt300n-v1.1
 
 define Device/linksys-wrt310n-v1
-  DEVICE_MODEL := WRT310N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT310N v1
   DEVICE_PACKAGES := kmod-tg3 kmod-b43
   $(Device/linksys)
   DEVICE_ID := 310N
@@ -214,8 +208,7 @@ endef
 TARGET_DEVICES += linksys-wrt310n-v1
 
 define Device/linksys-wrt350n-v1
-  DEVICE_MODEL := WRT350N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT350N v1
   DEVICE_PACKAGES := kmod-tg3 kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := EWCG
@@ -224,8 +217,7 @@ endef
 TARGET_DEVICES += linksys-wrt350n-v1
 
 define Device/linksys-wrt610n-v1
-  DEVICE_MODEL := WRT610N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT610N v1
   DEVICE_PACKAGES := kmod-tg3 kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := 610N
@@ -235,8 +227,7 @@ TARGET_DEVICES += linksys-wrt610n-v1
 
   # BCMA SoC with SSB WiFi
 define Device/linksys-wrt610n-v2
-  DEVICE_MODEL := WRT610N
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Linksys WRT610N v2
   DEVICE_PACKAGES := kmod-bgmac kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := 610N
@@ -245,8 +236,7 @@ endef
 TARGET_DEVICES += linksys-wrt610n-v2
 
 define Device/linksys-e3000-v1
-  DEVICE_MODEL := E3000
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E3000 v1
   DEVICE_PACKAGES := kmod-bgmac kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := 61XN
@@ -269,7 +259,7 @@ endif
 ifeq ($(SUBTARGET),legacy)
 
 define Device/asus-wl-300g
-  DEVICE_MODEL := WL-300g
+  DEVICE_TITLE := Asus WL-300g
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy
   $(Device/asus)
   PRODUCTID := "WL300g      "
@@ -277,7 +267,7 @@ endef
 TARGET_DEVICES += asus-wl-300g
 
 define Device/asus-wl-320gp
-  DEVICE_MODEL := WL-320gP
+  DEVICE_TITLE := Asus WL-320gP
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := "WL320gP     "
@@ -285,7 +275,7 @@ endef
 TARGET_DEVICES += asus-wl-320gp
 
 define Device/asus-wl-330ge
-  DEVICE_MODEL := WL-330gE
+  DEVICE_TITLE := Asus WL-330gE
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := "WL-330gE    "
@@ -293,7 +283,7 @@ endef
 TARGET_DEVICES += asus-wl-330ge
 
 define Device/asus-wl-500gd
-  DEVICE_MODEL := WL-500g Deluxe
+  DEVICE_TITLE := Asus WL-500g Deluxe
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := "WL500gx     "
@@ -301,8 +291,7 @@ endef
 TARGET_DEVICES += asus-wl-500gd
 
 define Device/asus-wl-500gp-v1
-  DEVICE_MODEL := WL-500gP
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Asus WL-500gP v1
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := "WL500gp     "
@@ -310,8 +299,7 @@ endef
 TARGET_DEVICES += asus-wl-500gp-v1
 
 define Device/asus-wl-500gp-v2
-  DEVICE_MODEL := WL-500gP
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Asus WL-500gP v2
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := "WL500gpv2   "
@@ -319,7 +307,7 @@ endef
 TARGET_DEVICES += asus-wl-500gp-v2
 
 define Device/asus-wl-500w
-  DEVICE_MODEL := WL-500W
+  DEVICE_TITLE := Asus WL-500W
   DEVICE_PACKAGES := kmod-b43 kmod-usb-uhci kmod-usb2-pci
   $(Device/asus)
   PRODUCTID := "WL500W      "
@@ -327,7 +315,7 @@ endef
 TARGET_DEVICES += asus-wl-500w
 
 define Device/asus-wl-520gu
-  DEVICE_MODEL := WL-520gU
+  DEVICE_TITLE := Asus WL-520gU
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := "WL520gu     "
@@ -335,7 +323,7 @@ endef
 TARGET_DEVICES += asus-wl-520gu
 
 define Device/asus-wl-550ge
-  DEVICE_MODEL := WL-550gE
+  DEVICE_TITLE := Asus WL-550gE
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := "WL550gE     "
@@ -343,7 +331,7 @@ endef
 TARGET_DEVICES += asus-wl-550ge
 
 define Device/asus-wl-hdd25
-  DEVICE_MODEL := WL-HDD25
+  DEVICE_TITLE := Asus WL-HDD25
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy $(USB1_PACKAGES)
   $(Device/asus)
   PRODUCTID := "WLHDD       "
@@ -351,8 +339,7 @@ endef
 TARGET_DEVICES += asus-wl-hdd25
 
 define Device/dlink-dwl-3150
-  DEVICE_VENDOR := D-Link
-  DEVICE_MODEL := DWL-3150
+  DEVICE_TITLE := D-Link DWL-3150
   IMAGES := bin
   IMAGE/bin := append-rootfs | trx-with-loader | tailed-bin
   BIN_TAIL := BCM-5352-2050-0000000-01
@@ -360,8 +347,7 @@ endef
 TARGET_DEVICES += dlink-dwl-3150
 
 define Device/edimax-ps1208-mfg
-  DEVICE_VENDOR := Edimax
-  DEVICE_MODEL := PS-1208MFg
+  DEVICE_TITLE := Edimax PS-1208MFg
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   IMAGES := bin
   IMAGE/bin := append-rootfs | trx-with-loader | edimax-bin
@@ -369,8 +355,7 @@ endef
 TARGET_DEVICES += edimax-ps1208-mfg
 
 define Device/huawei-e970
-  DEVICE_VENDOR := Huawei
-  DEVICE_MODEL := E970
+  DEVICE_TITLE := Huawei E970
   DEVICE_PACKAGES := kmod-b43
   KERNEL_NAME = vmlinux.gz
   IMAGES := bin
@@ -379,7 +364,7 @@ endef
 TARGET_DEVICES += huawei-e970
 
 define Device/linksys-wrt54g3g
-  DEVICE_MODEL := WRT54G3G
+  DEVICE_TITLE := Linksys WRT54G3G
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := W54F
@@ -388,7 +373,7 @@ endef
 TARGET_DEVICES += linksys-wrt54g3g
 
 define Device/linksys-wrt54g3g-em
-  DEVICE_MODEL := WRT54G3G-EM
+  DEVICE_TITLE := Linksys WRT54G3G-EM
   $(Device/linksys)
   DEVICE_ID := W3GN
   VERSION := 2.20.1
@@ -396,8 +381,7 @@ endef
 TARGET_DEVICES += linksys-wrt54g3g-em
 
 define Device/linksys-wrt54g3gv2-vf
-  DEVICE_VENDOR := Linksys
-  DEVICE_MODEL := WRT54G3GV2-VF
+  DEVICE_TITLE := Linksys WRT54G3GV2-VF
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   FILESYSTEMS := $(FS_128K)
   IMAGES := noheader.bin bin
@@ -410,7 +394,7 @@ endef
 TARGET_DEVICES += linksys-wrt54g3gv2-vf
 
 define Device/linksys-wrt54g
-  DEVICE_MODEL := WRT54G
+  DEVICE_TITLE := Linksys WRT54G
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy
   $(Device/linksys)
   DEVICE_ID := W54G
@@ -419,11 +403,7 @@ endef
 TARGET_DEVICES += linksys-wrt54g
 
 define Device/linksys-wrt54gs
-  DEVICE_MODEL := WRT54GS
-  DEVICE_VARIANT := v1/v2/v3
-  DEVICE_ALT0_VENDOR := Linksys
-  DEVICE_ALT0_MODEL := WRT54G-TM
-  DEVICE_ALT0_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT54GS
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   FILESYSTEMS := $(FS_128K)
@@ -433,8 +413,7 @@ endef
 TARGET_DEVICES += linksys-wrt54gs
 
 define Device/linksys-wrt54gs-v4
-  DEVICE_MODEL := WRT54GS
-  DEVICE_VARIANT := v4
+  DEVICE_TITLE := Linksys WRT54GS v4
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := W54s
@@ -443,7 +422,7 @@ endef
 TARGET_DEVICES += linksys-wrt54gs-v4
 
 define Device/linksys-wrtsl54gs
-  DEVICE_MODEL := WRTSL54GS
+  DEVICE_TITLE := Linksys WRTSL54GS
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   FILESYSTEMS := $(FS_128K)
@@ -453,7 +432,7 @@ endef
 TARGET_DEVICES += linksys-wrtsl54gs
 
 define Device/linksys-wrt150n
-  DEVICE_MODEL := WRT150N
+  DEVICE_TITLE := Linksys WRT150N
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := N150
@@ -462,8 +441,7 @@ endef
 TARGET_DEVICES += linksys-wrt150n
 
 define Device/linksys-wrt160n-v1
-  DEVICE_MODEL := WRT160N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT160N v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := N150
@@ -472,8 +450,7 @@ endef
 TARGET_DEVICES += linksys-wrt160n-v1
 
 define Device/linksys-wrt300n-v1
-  DEVICE_MODEL := WRT300N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT300N v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   IMAGES := bin trx
@@ -483,7 +460,7 @@ endef
 TARGET_DEVICES += linksys-wrt300n-v1
 
 define Device/motorola-wa840g
-  DEVICE_MODEL := WA840G
+  DEVICE_TITLE := Motorola WA840G
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy
   $(Device/motorola)
   MOTOROLA_DEVICE := 2
@@ -491,7 +468,7 @@ endef
 TARGET_DEVICES += motorola-wa840g
 
 define Device/motorola-we800g
-  DEVICE_MODEL := WE800G
+  DEVICE_TITLE := Motorola WE800G
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy
   $(Device/motorola)
   MOTOROLA_DEVICE := 3
@@ -499,7 +476,7 @@ endef
 TARGET_DEVICES += motorola-we800g
 
 define Device/motorola-wr850g
-  DEVICE_MODEL := WR850G
+  DEVICE_TITLE := Motorola WR850G
   DEVICE_PACKAGES := kmod-b43 kmod-b43legacy
   $(Device/motorola)
   MOTOROLA_DEVICE := 1
@@ -507,8 +484,7 @@ endef
 TARGET_DEVICES += motorola-wr850g
 
 define Device/netgear-wgr614-v8
-  DEVICE_MODEL := WGR614
-  DEVICE_VARIANT := v8
+  DEVICE_TITLE := Netgear WGR614 v8
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H072T00_NETGEAR
@@ -517,8 +493,7 @@ endef
 TARGET_DEVICES += netgear-wgr614-v8
 
 define Device/netgear-wgt634u
-  DEVICE_VENDOR := NETGEAR
-  DEVICE_MODEL := WGT634U
+  DEVICE_TITLE := Netgear WGT634U
   DEVICE_PACKAGES := kmod-ath5k $(USB2_PACKAGES)
   FILESYSTEMS := $(FS_128K)
   IMAGES := bin
@@ -527,8 +502,7 @@ endef
 TARGET_DEVICES += netgear-wgt634u
 
 define Device/netgear-wndr3300-v1
-  DEVICE_MODEL := WNDR3300
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Netgear WNDR3300 v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H093T00_NETGEAR
@@ -537,8 +511,7 @@ endef
 TARGET_DEVICES += netgear-wndr3300-v1
 
 define Device/netgear-wnr834b-v2
-  DEVICE_MODEL := WNR834B
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Netgear WNR834B v2
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H081T00_NETGEAR
@@ -547,8 +520,7 @@ endef
 TARGET_DEVICES += netgear-wnr834b-v2
 
 define Device/usrobotics-usr5461
-  DEVICE_VENDOR := US Robotics
-  DEVICE_MODEL := USR5461
+  DEVICE_TITLE := USRobotics USR5461
   DEVICE_PACKAGES := kmod-b43 $(USB1_PACKAGES)
   IMAGES := bin
   IMAGE/bin := append-rootfs | trx-with-loader | usrobotics-bin
@@ -564,7 +536,7 @@ endif
 
 ifeq ($(SUBTARGET),mips74k)
 define Device/asus-rt-ac53u
-  DEVICE_MODEL := RT-AC53U
+  DEVICE_TITLE := Asus RT-AC53U
   DEVICE_PACKAGES := $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-AC53U
@@ -572,7 +544,7 @@ endef
 TARGET_DEVICES += asus-rt-ac53u
 
 define Device/asus-rt-ac66u
-  DEVICE_MODEL := RT-AC66U
+  DEVICE_TITLE := Asus RT-AC66U
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-AC66U
@@ -580,7 +552,7 @@ endef
 #  TARGET_DEVICES += asus-rt-ac66u
 
 define Device/asus-rt-n10
-  DEVICE_MODEL := RT-N10
+  DEVICE_TITLE := Asus RT-N10
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := "RT-N10      "
@@ -588,8 +560,7 @@ endef
 TARGET_DEVICES += asus-rt-n10
 
 define Device/asus-rt-n10p
-  DEVICE_MODEL := RT-N10P
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Asus RT-N10P
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := RT-N10P
@@ -597,16 +568,14 @@ endef
 TARGET_DEVICES += asus-rt-n10p
 
 define Device/asus-rt-n10p-v2
-  DEVICE_MODEL := RT-N10P
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Asus RT-N10P v2
   $(Device/asus)
   PRODUCTID := RT-N10PV2
 endef
 TARGET_DEVICES += asus-rt-n10p-v2
 
 define Device/asus-rt-n10u
-  DEVICE_MODEL := RT-N10U
-  DEVICE_VARIANT := A
+  DEVICE_TITLE := Asus RT-N10U
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N10U
@@ -614,8 +583,7 @@ endef
 TARGET_DEVICES += asus-rt-n10u
 
 define Device/asus-rt-n10u-b
-  DEVICE_MODEL := RT-N10U
-  DEVICE_VARIANT := B
+  DEVICE_TITLE := Asus RT-N10U B
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N10U
@@ -623,8 +591,7 @@ endef
 TARGET_DEVICES += asus-rt-n10u-b
 
 define Device/asus-rt-n12
-  DEVICE_MODEL := RT-N12
-  DEVICE_VARIANT := A1
+  DEVICE_TITLE := Asus RT-N12
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := "RT-N12      "
@@ -632,38 +599,35 @@ endef
 TARGET_DEVICES += asus-rt-n12
 
 define Device/asus-rt-n12-b1
-  DEVICE_MODEL := RT-N12
-  DEVICE_VARIANT := B1
+  DEVICE_TITLE := Asus RT-N12 B1
   $(Device/asus)
   PRODUCTID := RT-N12B1
 endef
 TARGET_DEVICES += asus-rt-n12-b1
 
 define Device/asus-rt-n12-c1
-  DEVICE_MODEL := RT-N12
-  DEVICE_VARIANT := C1
+  DEVICE_TITLE := Asus RT-N12 C1
   $(Device/asus)
   PRODUCTID := RT-N12C1
 endef
 TARGET_DEVICES += asus-rt-n12-c1
 
 define Device/asus-rt-n12-d1
-  DEVICE_MODEL := RT-N12
-  DEVICE_VARIANT := D1
+  DEVICE_TITLE := Asus RT-N12 D1
   $(Device/asus)
   PRODUCTID := RT-N12D1
 endef
 TARGET_DEVICES += asus-rt-n12-d1
 
 define Device/asus-rt-n12hp
-  DEVICE_MODEL := RT-N12HP
+  DEVICE_TITLE := Asus RT-N12HP
   $(Device/asus)
   PRODUCTID := RT-N12HP
 endef
 TARGET_DEVICES += asus-rt-n12hp
 
 define Device/asus-rt-n14uhp
-  DEVICE_MODEL := RT-N14UHP
+  DEVICE_TITLE := Asus RT-N14UHP
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N14UHP
@@ -671,7 +635,7 @@ endef
 TARGET_DEVICES += asus-rt-n14uhp
 
 define Device/asus-rt-n15u
-  DEVICE_MODEL := RT-N15U
+  DEVICE_TITLE := Asus RT-N15U
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N15U
@@ -679,7 +643,7 @@ endef
 TARGET_DEVICES += asus-rt-n15u
 
 define Device/asus-rt-n16
-  DEVICE_MODEL := RT-N16
+  DEVICE_TITLE := Asus RT-N16
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N16
@@ -687,7 +651,7 @@ endef
 TARGET_DEVICES += asus-rt-n16
 
 define Device/asus-rt-n53
-  DEVICE_MODEL := RT-N53
+  DEVICE_TITLE := Asus RT-N53
   DEVICE_PACKAGES := kmod-b43
   $(Device/asus)
   PRODUCTID := RT-N53
@@ -695,7 +659,7 @@ endef
 TARGET_DEVICES += asus-rt-n53
 
 define Device/asus-rt-n66u
-  DEVICE_MODEL := RT-N66U
+  DEVICE_TITLE := Asus RT-N66U
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N66U
@@ -703,7 +667,7 @@ endef
 TARGET_DEVICES += asus-rt-n66u
 
 define Device/asus-rt-n66w
-  DEVICE_MODEL := RT-N66W
+  DEVICE_TITLE := Asus RT-N66W
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/asus)
   PRODUCTID := RT-N66U
@@ -711,8 +675,7 @@ endef
 TARGET_DEVICES += asus-rt-n66w
 
 define Device/linksys-wrt160n-v3
-  DEVICE_MODEL := WRT160N
-  DEVICE_VARIANT := v3
+  DEVICE_TITLE := Linksys WRT160N v3
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := N150
@@ -721,8 +684,7 @@ endef
 TARGET_DEVICES += linksys-wrt160n-v3
 
 define Device/linksys-wrt310n-v2
-  DEVICE_MODEL := WRT310N
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Linksys WRT310N v2
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 310N
@@ -731,8 +693,7 @@ endef
 TARGET_DEVICES += linksys-wrt310n-v2
 
 define Device/linksys-wrt320n-v1
-  DEVICE_MODEL := WRT320N
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys WRT320N v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 320N
@@ -741,8 +702,7 @@ endef
 TARGET_DEVICES += linksys-wrt320n-v1
 
 define Device/linksys-e900-v1
-  DEVICE_MODEL := E900
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E900 v1
   $(Device/linksys)
   DEVICE_ID := E900
   VERSION := 1.0.4
@@ -750,18 +710,17 @@ endef
 TARGET_DEVICES += linksys-e900-v1
 
 define Device/linksys-e1000
-  DEVICE_MODEL := E1000
-  DEVICE_VARIANT := v1/v2/v2.1
+  DEVICE_TITLE := Linksys E1000 v1 v2 v2.1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := E100
   VERSION := 1.1.3
+  DEFAULT := n
 endef
 TARGET_DEVICES += linksys-e1000
 
 define Device/linksys-e1200-v1
-  DEVICE_MODEL := E1200
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E1200 v1
   $(Device/linksys)
   DEVICE_ID := E120
   VERSION := 1.0.3
@@ -769,8 +728,7 @@ endef
 TARGET_DEVICES += linksys-e1200-v1
 
 define Device/linksys-e1200-v2
-  DEVICE_MODEL := E1200
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Linksys E1200 v2
   $(Device/linksys)
   DEVICE_ID := E122
   VERSION := 1.0.4
@@ -778,8 +736,7 @@ endef
 TARGET_DEVICES += linksys-e1200-v2
 
 define Device/linksys-e1500-v1
-  DEVICE_MODEL := E1500
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E1500 v1
   $(Device/linksys)
   DEVICE_ID := E150
   VERSION := 1.0.5
@@ -787,8 +744,7 @@ endef
 TARGET_DEVICES += linksys-e1500-v1
 
 define Device/linksys-e1550-v1
-  DEVICE_MODEL := E1550
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E1550 v1
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := 1550
@@ -797,8 +753,7 @@ endef
 TARGET_DEVICES += linksys-e1550-v1
 
 define Device/linksys-e2000-v1
-  DEVICE_MODEL := E2000
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E2000 v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 32XN
@@ -807,8 +762,7 @@ endef
 TARGET_DEVICES += linksys-e2000-v1
 
 define Device/linksys-e2500-v1
-  DEVICE_MODEL := E2500
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E2500 v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := E25X
@@ -817,8 +771,7 @@ endef
 TARGET_DEVICES += linksys-e2500-v1
 
 define Device/linksys-e2500-v2
-  DEVICE_MODEL := E2500
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Linksys E2500 v2
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := E25X
@@ -827,8 +780,7 @@ endef
 TARGET_DEVICES += linksys-e2500-v2
 
 define Device/linksys-e2500-v2.1
-  DEVICE_MODEL := E2500
-  DEVICE_VARIANT := v2.1
+  DEVICE_TITLE := Linksys E2500 v2.1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 25RU
@@ -837,8 +789,7 @@ endef
 TARGET_DEVICES += linksys-e2500-v2.1
 
 define Device/linksys-e2500-v3
-  DEVICE_MODEL := E2500
-  DEVICE_VARIANT := v3
+  DEVICE_TITLE := Linksys E2500 v3
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 25V3
@@ -847,8 +798,7 @@ endef
 TARGET_DEVICES += linksys-e2500-v3
 
 define Device/linksys-e3200-v1
-  DEVICE_MODEL := E3200
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E3200 v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/linksys)
   DEVICE_ID := 3200
@@ -857,8 +807,7 @@ endef
 TARGET_DEVICES += linksys-e3200-v1
 
 define Device/linksys-e4200-v1
-  DEVICE_MODEL := E4200
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Linksys E4200 v1
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/linksys)
   DEVICE_ID := 4200
@@ -867,8 +816,7 @@ endef
 TARGET_DEVICES += linksys-e4200-v1
 
 define Device/netgear-wgr614-v10-na
-  DEVICE_MODEL := WGR614
-  DEVICE_VARIANT := v10 (NA)
+  DEVICE_TITLE := Netgear WGR614 v10 North America
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H139T01_NETGEAR
   NETGEAR_REGION := 2
@@ -876,8 +824,7 @@ endef
 TARGET_DEVICES += netgear-wgr614-v10-na
 
 define Device/netgear-wgr614-v10
-  DEVICE_MODEL := WGR614
-  DEVICE_VARIANT := v10
+  DEVICE_TITLE := Netgear WGR614 v10
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H139T01_NETGEAR
   NETGEAR_REGION := 1
@@ -885,8 +832,7 @@ endef
 TARGET_DEVICES += netgear-wgr614-v10
 
 define Device/netgear-wn2500rp-v1
-  DEVICE_MODEL := WN2500RP
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Netgear WN2500RP v1
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H197T00_NETGEAR
@@ -895,7 +841,7 @@ endef
 TARGET_DEVICES += netgear-wn2500rp-v1
 
 define Device/netgear-wn3000rp
-  DEVICE_MODEL := WN3000RP
+  DEVICE_TITLE := Netgear WN3000RP
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H163T01_NETGEAR
   NETGEAR_REGION := 1
@@ -903,8 +849,7 @@ endef
 TARGET_DEVICES += netgear-wn3000rp
 
 define Device/netgear-wndr3400-v1
-  DEVICE_MODEL := WNDR3400
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Netgear WNDR3400 v1
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H155T00_NETGEAR
@@ -913,8 +858,7 @@ endef
 TARGET_DEVICES += netgear-wndr3400-v1
 
 define Device/netgear-wndr3400-v2
-  DEVICE_MODEL := WNDR3400
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Netgear WNDR3400 v2
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H187T00_NETGEAR
@@ -923,8 +867,7 @@ endef
 TARGET_DEVICES += netgear-wndr3400-v2
 
 define Device/netgear-wndr3400-v3
-  DEVICE_MODEL := WNDR3400
-  DEVICE_VARIANT := v3
+  DEVICE_TITLE := Netgear WNDR3400 v3
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H208T00_NETGEAR
@@ -933,8 +876,7 @@ endef
 TARGET_DEVICES += netgear-wndr3400-v3
 
 define Device/netgear-wndr3700-v3
-  DEVICE_MODEL := WNDR3700
-  DEVICE_VARIANT := v3
+  DEVICE_TITLE := Netgear WNDR3700 v3
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H194T00_NETGEAR
@@ -943,8 +885,7 @@ endef
 TARGET_DEVICES += netgear-wndr3700-v3
 
 define Device/netgear-wndr3400-vcna
-  DEVICE_MODEL := WNDR3400
-  DEVICE_VARIANT := vcna
+  DEVICE_TITLE := Netgear WNDR3400 vcna
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H155T01_NETGEAR
@@ -953,8 +894,7 @@ endef
 #  TARGET_DEVICES += netgear-wndr3400-vcna
 
 define Device/netgear-wndr4000
-  DEVICE_MODEL := WNDR4000
-  DEVICE_VARIANT := v1
+  DEVICE_TITLE := Netgear WNDR4000
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H181T00_NETGEAR
@@ -963,8 +903,7 @@ endef
 TARGET_DEVICES += netgear-wndr4000
 
 define Device/netgear-wnr1000-v3
-  DEVICE_MODEL := WNR1000
-  DEVICE_VARIANT := v3
+  DEVICE_TITLE := Netgear WNR1000 v3
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H139T00_NETGEAR
   NETGEAR_REGION := 2
@@ -972,8 +911,7 @@ endef
 TARGET_DEVICES += netgear-wnr1000-v3
 
 define Device/netgear-wnr2000v2
-  DEVICE_MODEL := WNR2000
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Netgear WNR2000 v2
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H114T00_NETGEAR
@@ -982,8 +920,7 @@ endef
 TARGET_DEVICES += netgear-wnr2000v2
 
 define Device/netgear-wnr3500l-v1-na
-  DEVICE_MODEL := WNR3500L
-  DEVICE_VARIANT := v1 (NA)
+  DEVICE_TITLE := Netgear WNR3500L v1 North America
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H136T99_NETGEAR
@@ -992,8 +929,7 @@ endef
 TARGET_DEVICES += netgear-wnr3500l-v1-na
 
 define Device/netgear-wnr3500l-v1
-  DEVICE_MODEL := WNR3500L
-  DEVICE_VARIANT := v1 (ROW)
+  DEVICE_TITLE := Netgear WNR3500L v1 Other Regions
   DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H136T99_NETGEAR
@@ -1002,8 +938,7 @@ endef
 TARGET_DEVICES += netgear-wnr3500l-v1
 
 define Device/netgear-wnr3500l-v2
-  DEVICE_MODEL := WNR3500L
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Netgear WNR3500L v2
   DEVICE_PACKAGES := $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H172T00_NETGEAR
@@ -1012,7 +947,7 @@ endef
 TARGET_DEVICES += netgear-wnr3500l-v2
 
 define Device/netgear-wnr3500u
-  DEVICE_MODEL := WNR3500U
+  DEVICE_TITLE := Netgear WNR3500U
   DEVICE_PACKAGES := $(USB2_PACKAGES)
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H136T00_NETGEAR
@@ -1021,8 +956,7 @@ endef
 #  TARGET_DEVICES += netgear-wnr3500u
 
 define Device/netgear-wnr3500-v2
-  DEVICE_MODEL := WNR3500
-  DEVICE_VARIANT := v2
+  DEVICE_TITLE := Netgear WNR3500 v2
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H127T00_NETGEAR
@@ -1031,8 +965,7 @@ endef
 TARGET_DEVICES += netgear-wnr3500-v2
 
 define Device/netgear-wnr3500-v2-vc
-  DEVICE_MODEL := WNR3500
-  DEVICE_VARIANT := v2 (VC)
+  DEVICE_TITLE := Netgear WNR3500 v2 vc
   DEVICE_PACKAGES := kmod-b43
   $(Device/netgear)
   NETGEAR_BOARD_ID := U12H127T70_NETGEAR

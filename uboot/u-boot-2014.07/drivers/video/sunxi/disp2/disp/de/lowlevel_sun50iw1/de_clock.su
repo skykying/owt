@@ -1,0 +1,4 @@
+de_clock.c:33:12:__de_clk_enable	32	static
+de_clock.c:117:5:de_clk_enable	0	static
+de_clock.c:122:5:de_clk_disable	0	static
+de_clock.c:127:5:de_clk_set_reg_base	0	static

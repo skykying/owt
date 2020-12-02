@@ -1,0 +1,14 @@
+sunxi_gic.c:457:13:gic_cpuif_init	0	static
+sunxi_gic.c:501:13:gic_spi_set_target	0	static
+sunxi_gic.c:391:13:gic_distributor_init	0	static
+sunxi_gic.c:61:13:default_isr	8	static
+sunxi_gic.c:82:5:irq_enable	8	static
+sunxi_gic.c:122:5:irq_disable	8	static
+sunxi_gic.c:252:6:irq_install_handler	24	static
+sunxi_gic.c:290:6:irq_free_handler	8	static
+sunxi_gic.c:321:6:do_irq	8	static
+sunxi_gic.c:353:5:do_irqinfo	32	static
+sunxi_gic.c:533:5:arch_interrupt_init	8	static
+sunxi_gic.c:564:5:arch_interrupt_exit	8	static
+sunxi_gic.c:574:5:sunxi_gic_cpu_interface_init	8	static
+sunxi_gic.c:581:5:sunxi_gic_cpu_interface_exit	0	static

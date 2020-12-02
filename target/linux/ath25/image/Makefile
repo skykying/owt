@@ -61,8 +61,7 @@ define Device/Default
 endef
 
 define Device/generic
-  DEVICE_VENDOR := Atheros
-  DEVICE_MODEL := Generic AR2xxx board
+  DEVICE_TITLE := Generic Images
   IMAGES := kernel.lzma kernel.elf kernel.gz rootfs.bin sysupgrade.bin
   IMAGE/kernel.gz := elf-kernel | gzip-kernel
   IMAGE/kernel.elf := elf-kernel
@@ -74,37 +73,32 @@ endef
 TARGET_DEVICES += generic
 
 define Device/ubnt2-pico2
-  DEVICE_VENDOR := Ubiquiti
-  DEVICE_MODEL := XS2-8
+  DEVICE_TITLE := Ubiquiti XS2-8
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 128k | mkfwimage XS2-8 -v XS2.ar2316
 endef
 TARGET_DEVICES += ubnt2-pico2
 
 define Device/ubnt2
-  DEVICE_VENDOR := Ubiquiti
-  DEVICE_MODEL := XS2
+  DEVICE_TITLE := Ubiquiti XS2
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 128k | mkfwimage XS2 -v XS2.ar2316
 endef
-TARGET_DEVICES += ubnt2
+#TARGET_DEVICES += ubnt2
 
 define Device/ubnt5
-  DEVICE_VENDOR := Ubiquiti
-  DEVICE_MODEL := XS5
+  DEVICE_TITLE := Ubiquiti XS5
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 128k | mkfwimage XS5 -v XS5.ar2313
 endef
-TARGET_DEVICES += ubnt5
+#TARGET_DEVICES += ubnt5
 
 define Device/np25g
-  DEVICE_VENDOR := Compex
-  DEVICE_MODEL := NP25G
+  DEVICE_TITLE := np25g
   KERNEL := kernel-bin | gzip-kernel
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 128k | mkmylofw np25g
 endef
 #TARGET_DEVICES += np25g
 
 define Device/wpe53g
-  DEVICE_VENDOR := Compex
-  DEVICE_MODEL := WPE53G
+  DEVICE_TITLE := wpe53g
   KERNEL := kernel-bin | gzip-kernel
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 128k | mkmylofw wpe53g
 endef

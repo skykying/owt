@@ -12,7 +12,7 @@
 };
 
 &leds {
-	led_power: power {
+	power: power {
 		label = "elecom:blue:power";
 		gpios = <&gpio 1 GPIO_ACTIVE_HIGH>;
 		default-state = "on";

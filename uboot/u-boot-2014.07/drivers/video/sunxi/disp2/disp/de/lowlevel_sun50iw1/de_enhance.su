@@ -1,0 +1,10 @@
+de_enhance.c:38:5:de_enhance_info2data	168	static
+de_enhance.c:150:5:de_enhance_set_size	72	static
+de_enhance.c:214:5:de_enhance_demo_enable	0	static
+de_enhance.c:227:5:de_enhance_sync	0	static
+de_enhance.c:232:5:de_enhance_tasklet	24	static
+de_enhance.c:250:5:de_enhance_update_regs	16	static
+de_enhance.c:272:5:de_enhance_init	32	static
+de_enhance.c:304:5:de_enhance_set_mode	608	static
+de_enhance.c:100:5:de_enhance_apply	384	static
+de_enhance.c:84:5:de_enhance_set_format	8	static

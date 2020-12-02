@@ -28,7 +28,7 @@ define Package/arm-trusted-firmware-sunxi
     SECTION:=boot
     CATEGORY:=Boot Loaders
     TITLE:=ARM Trusted Firmware for Allwinner
-    DEPENDS:=@TARGET_sunxi_cortexa53
+    DEPENDS:=@(TARGET_sunxi_cortexa53||TARGET_allwinner_cortexa53)
 endef
 
 export GCC_HONOUR_COPTS=s

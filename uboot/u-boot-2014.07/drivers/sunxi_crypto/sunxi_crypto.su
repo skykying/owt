@@ -1,0 +1,9 @@
+sunxi_crypto.c:21:12:__aw_endian4	0	static
+sunxi_crypto.c:127:13:__rsa_padding	24	static
+sunxi_crypto.c:32:12:0	88	static
+sunxi_crypto.c:138:6:sunxi_ss_open	0	static
+sunxi_crypto.c:143:6:sunxi_ss_close	0	static
+sunxi_crypto.c:148:6:sunxi_md5_calc	536	dynamic,bounded
+sunxi_crypto.c:212:6:sunxi_sha_calc	536	dynamic,bounded
+sunxi_crypto.c:280:5:sunxi_rsa_calc	1856	dynamic,bounded
+sunxi_crypto.c:368:5:sunxi_create_rssk	528	dynamic,bounded

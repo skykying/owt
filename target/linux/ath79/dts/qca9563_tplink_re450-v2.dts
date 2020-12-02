@@ -15,17 +15,17 @@
 	};
 
 	aliases {
-		led-boot = &led_power;
-		led-failsafe = &led_power;
-		led-running = &led_power;
-		led-upgrade = &led_power;
+		led-boot = &system;
+		led-failsafe = &system;
+		led-running = &system;
+		led-upgrade = &system;
 		mdio-gpio0 = &mdio2;
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
+		system: power {
 			label = "tp-link:blue:power";
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};

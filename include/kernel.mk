@@ -104,7 +104,6 @@ endif
 KERNEL_MAKE = $(MAKE) $(KERNEL_MAKEOPTS)
 
 KERNEL_MAKE_FLAGS = \
-	KCFLAGS="$(call iremap,$(BUILD_DIR),$(notdir $(BUILD_DIR)))" \
 	HOSTCFLAGS="$(HOST_CFLAGS) -Wall -Wmissing-prototypes -Wstrict-prototypes" \
 	CROSS_COMPILE="$(KERNEL_CROSS)" \
 	ARCH="$(LINUX_KARCH)" \
@@ -130,8 +129,7 @@ ifdef CONFIG_USE_SPARSE
   KERNEL_MAKEOPTS += C=1 CHECK=$(STAGING_DIR_HOST)/bin/sparse
 endif
 
-ifneq ($(HOST_OS),Linux)
-  KERNEL_MAKEOPTS += CONFIG_STACK_VALIDATION=
+ifeq ($(HOST_OS),Darwin)
   export SKIP_STACK_VALIDATION:=1
 endif
 

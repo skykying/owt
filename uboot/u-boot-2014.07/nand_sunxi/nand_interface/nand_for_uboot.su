@@ -1,0 +1,17 @@
+nand_for_uboot.c:50:6:nand_get_mbr	32	static
+nand_for_uboot.c:95:5:nand_uboot_init	16	static
+nand_for_uboot.c:109:5:nand_uboot_init_force_sprite	8	static
+nand_for_uboot.c:115:5:nand_uboot_exit	16	static
+nand_for_uboot.c:136:5:nand_uboot_probe	0	static
+nand_for_uboot.c:143:6:nand_uboot_read	8	static
+nand_for_uboot.c:153:6:nand_uboot_write	8	static
+nand_for_uboot.c:163:5:nand_download_boot0	16	static
+nand_for_uboot.c:181:5:nand_read_boot0	0	static
+nand_for_uboot.c:187:5:nand_write_boot0	16	static
+nand_for_uboot.c:201:5:nand_download_uboot	16	static
+nand_for_uboot.c:219:5:nand_force_download_uboot	16	static
+nand_for_uboot.c:232:5:nand_uboot_erase	0	static
+nand_for_uboot.c:238:6:nand_uboot_get_flash_info	0	static
+nand_for_uboot.c:243:6:nand_uboot_set_flash_info	0	static
+nand_for_uboot.c:248:6:nand_uboot_get_flash_size	0	static
+nand_for_uboot.c:253:5:nand_uboot_flush	0	static

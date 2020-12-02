@@ -2,7 +2,9 @@
 
 START=99
 
-boot() {
+start() {
+	. /lib/functions.sh
+
 	case $(board_name) in
 	linksys,caiman |\
 	linksys,cobra |\

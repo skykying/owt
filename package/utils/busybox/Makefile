@@ -8,14 +8,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=busybox
-PKG_VERSION:=1.31.1
-PKG_RELEASE:=1
+PKG_VERSION:=1.30.1
+PKG_RELEASE:=5
 PKG_FLAGS:=essential
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://www.busybox.net/downloads \
 		http://sources.buildroot.net
-PKG_HASH:=d0f940a72f648943c1f2211e0e3117387c31d765137d92bd8284a3fb9752a998
+PKG_HASH:=3d1d04a4dbd34048f4794815a5c48ebb9eb53c5277e09ffffc060323b95dfbdc
 
 PKG_BUILD_DEPENDS:=BUSYBOX_CONFIG_PAM:libpam
 PKG_BUILD_PARALLEL:=1
@@ -113,9 +113,6 @@ endif
 ifneq ($(CONFIG_BUSYBOX_$(BUSYBOX_SYM)_NTPD),)
 	$(INSTALL_BIN) ./files/sysntpd $(1)/etc/init.d/sysntpd
 	$(INSTALL_BIN) ./files/ntpd-hotplug $(1)/usr/sbin/ntpd-hotplug
-endif
-ifneq ($(CONFIG_BUSYBOX_$(BUSYBOX_SYM)_FEATURE_SUID),)
-	$(INSTALL_SUID) $(PKG_INSTALL_DIR)/bin/busybox $(1)/bin/busybox
 endif
 	-rm -rf $(1)/lib64
 endef

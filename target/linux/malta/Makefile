@@ -11,12 +11,13 @@ BOARDNAME:=MIPS Malta CoreLV board (qemu)
 CPU_TYPE:=24kc
 SUBTARGETS:=le be le64 be64
 INITRAMFS_EXTRA_FILES:=
-FEATURES:=cpiogz ext4 ramdisk squashfs targz
+MAINTAINER:=Florian Fainelli <florian@openwrt.org>
+FEATURES:=ramdisk
 
-KERNEL_PATCHVER:=4.19
+KERNEL_PATCHVER:=4.14
 
 include $(INCLUDE_DIR)/target.mk
 
-DEFAULT_PACKAGES += wpad-basic kmod-mac80211-hwsim kmod-pcnet32 mkf2fs e2fsprogs
+DEFAULT_PACKAGES += wpad-basic kmod-mac80211-hwsim kmod-pcnet32
 
 $(eval $(call BuildTarget))

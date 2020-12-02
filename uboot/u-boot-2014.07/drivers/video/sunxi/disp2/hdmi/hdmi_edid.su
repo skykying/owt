@@ -1,0 +1,4 @@
+hdmi_edid.c:400:5:hdmi_edid_parse	32	static
+hdmi_edid.c:424:5:hdmi_edid_is_hdmi	0	static
+hdmi_edid.c:429:5:hdmi_edid_is_yuv	0	static
+hdmi_edid.c:434:11:hdmi_edid_get_data	0	static

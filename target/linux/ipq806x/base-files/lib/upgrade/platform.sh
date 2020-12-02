@@ -21,11 +21,9 @@ platform_do_upgrade() {
 	netgear,r7500v2 |\
 	netgear,r7800 |\
 	qcom,ipq8064-ap148 |\
-	qcom,ipq8064-ap161)
-		nand_do_upgrade "$1"
-		;;
+	qcom,ipq8064-ap161 |\
 	zyxel,nbg6817)
-		zyxel_do_upgrade "$1"
+		nand_do_upgrade "$1"
 		;;
 	linksys,ea8500)
 		platform_do_upgrade_linksys "$1"
@@ -43,6 +41,14 @@ platform_do_upgrade() {
 	nec,wg2600hp |\
 	*)
 		default_do_upgrade "$1"
+		;;
+	esac
+}
+
+platform_nand_pre_upgrade() {
+	case "$(board_name)" in
+	zyxel,nbg6817)
+		zyxel_do_upgrade "$1"
 		;;
 	esac
 }
