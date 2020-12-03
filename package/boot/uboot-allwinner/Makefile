@@ -18,35 +18,34 @@ PKG_MAINTAINER:=Zoltan HERPAI <wigyori@uid0.hu>
 include $(INCLUDE_DIR)/u-boot.mk
 include $(INCLUDE_DIR)/package.mk
 
-ifneq ($(strip $(CONFIG_EXTERNAL_UBOOT_TREE)),"")
-	define Build/Prepare
-		if [ -d $(PKG_BUILD_DIR) ]; then \
-			rm -fR $(PKG_BUILD_DIR); \
-		fi
-		mkdir -p $(PKG_BUILD_DIR)
-		rsync -a $(CONFIG_EXTERNAL_UBOOT_TREE)/ $(PKG_BUILD_DIR)
+define Build/Prepare
+	if [ -d $(PKG_BUILD_DIR) ]; then \
+		rm -fR $(PKG_BUILD_DIR); \
+	fi
+	mkdir -p $(PKG_BUILD_DIR)
+	rsync -a $(CONFIG_EXTERNAL_UBOOT_TREE)/ $(PKG_BUILD_DIR)
 		
-		if [ -d $(PKG_BUILD_DIR)/../bootloader ]; then \
-                        rm -fR $(PKG_BUILD_DIR)/../bootloader; \
-                fi
-		mv $(PKG_BUILD_DIR)/bootloader $(PKG_BUILD_DIR)/..
+	if [ -d $(PKG_BUILD_DIR)/../bootloader ]; then \
+        rm -fR $(PKG_BUILD_DIR)/../bootloader; \
+    fi
+	mv $(PKG_BUILD_DIR)/bootloader $(PKG_BUILD_DIR)/..
 
-		if [ -d $(PKG_BUILD_DIR)/../gcc-linaro ]; then \
-                        rm -fR $(PKG_BUILD_DIR)/../gcc-linaro; \
-                fi
-		mv $(PKG_BUILD_DIR)/gcc-linaro $(PKG_BUILD_DIR)/..
+	if [ -d $(PKG_BUILD_DIR)/../gcc-linaro ]; then \
+        rm -fR $(PKG_BUILD_DIR)/../gcc-linaro; \
+    fi
+	mv $(PKG_BUILD_DIR)/gcc-linaro $(PKG_BUILD_DIR)/..
 
-		if [ -d $(PKG_BUILD_DIR)/../armv8_toolchain ]; then \
-                        rm -fR $(PKG_BUILD_DIR)/../armv8_toolchain; \
-                fi
-		mv $(PKG_BUILD_DIR)/armv8_toolchain $(PKG_BUILD_DIR)/..
+	if [ -d $(PKG_BUILD_DIR)/../armv8_toolchain ]; then \
+        rm -fR $(PKG_BUILD_DIR)/../armv8_toolchain; \
+    fi
+	mv $(PKG_BUILD_DIR)/armv8_toolchain $(PKG_BUILD_DIR)/..
 
-		mv $(PKG_BUILD_DIR)/u-boot-2014.07/* $(PKG_BUILD_DIR)
-		if [ -d $(PKG_BUILD_DIR)/u-boot-2014.07 ]; then \
-                        rm -fR $(PKG_BUILD_DIR)/u-boot-2014.07; \
-                fi
-        endef
-endif
+	mv $(PKG_BUILD_DIR)/u-boot-2014.07/* $(PKG_BUILD_DIR)
+	if [ -d $(PKG_BUILD_DIR)/u-boot-2014.07 ]; then \
+        rm -fR $(PKG_BUILD_DIR)/u-boot-2014.07; \
+    fi
+endef
+
 
 define U-Boot/Default
   SECTION:=boot
@@ -68,7 +67,7 @@ define U-Boot/sun50iw1p1
   NAME:=tulip  A64
   BUILD_DEVICES:=sun50i-a64-tulip-plus
   UBOOT_SUNXI_IMAGE:=u-boot-sun50iw1p1.bin
-  DEPENDS:=+PACKAGE_u-boot-sun50iw1p1:arm-trusted-firmware-sunxi
+  DEPENDS:=+PACKAGE_u-boot-sun50iw1p1
   UENV:=a64
 endef
 

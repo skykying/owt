@@ -122,7 +122,7 @@ menuconfig DEVEL
 
 	config EXTERNAL_UBOOT_TREE
 		string "Use external u boot tree for allwinner"  if DEVEL
-		default ""
+		default "$(TOPDIR)/uboot"
 
 	config EXTERNAL_RAMDISK_TREE
 		string "Use external ramdisk for allwinner"  if DEVEL
