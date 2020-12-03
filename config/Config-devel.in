@@ -105,13 +105,6 @@ menuconfig DEVEL
 		help
 		  If enabled, log files will be written to the ./log directory.
 
-	config BUILD_LOG_DIR
-		string "Log folder" if DEVEL
-		default ""
-		help
-		  Store build logs in this directory.
-		  If not set, uses './logs'
-
 	config SRC_TREE_OVERRIDE
 		bool "Enable package source tree override" if DEVEL
 		help
@@ -126,3 +119,15 @@ menuconfig DEVEL
 		default "-fno-caller-saves"
 		help
 		  Extra target-independent optimizations to use when building for the target.
+
+	config EXTERNAL_UBOOT_TREE
+		string "Use external u boot tree for allwinner"  if DEVEL
+		default ""
+
+	config EXTERNAL_RAMDISK_TREE
+		string "Use external ramdisk for allwinner"  if DEVEL
+		default "$(TOPDIR)/ramdisk/buildroot-2020.02.7"
+
+	config EXTERNAL_RAMDISK_DEFCONFIG
+		string "config of ramdisk for allwinner"  if DEVEL
+		default "tulip_openwrt_ramdisk_defconfig"
